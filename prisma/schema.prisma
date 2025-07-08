@@ -1,0 +1,264 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      String   @default("USER")
+  avatar    String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model UserPreferences {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  receiveDaily       Boolean  @default(true)
+  receiveWeekly      Boolean  @default(true)
+  receiveAnalyses    Boolean  @default(true)
+  receiveSelections  Boolean  @default(true)
+  receiveThematic    Boolean  @default(true)
+  emailNotifications Boolean  @default(true)
+  marketingEmails    Boolean  @default(false)
+  preferredSendTime  String   @default("08:00")
+  timezone           String   @default("Europe/Paris")
+  language           String   @default("fr")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@map("user_preferences")
+}
+
+model Subscription {
+  id                   String    @id @default(cuid())
+  userId               String    @unique
+  plan                 String
+  status               String    @default("ACTIVE")
+  stripeCustomerId     String?   @unique
+  stripeSubscriptionId String?   @unique
+  currentPeriodStart   DateTime?
+  currentPeriodEnd     DateTime?
+  cancelAtPeriodEnd    Boolean   @default(false)
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  @@map("subscriptions")
+}
+
+model Newsletter {
+  id             String    @id @default(cuid())
+  title          String
+  subtitle       String?
+  content        String
+  excerpt        String?
+  type           String
+  status         String    @default("DRAFT")
+  isPremium      Boolean   @default(false)
+  slug           String    @unique
+  seoTitle       String?
+  seoDescription String?
+  scheduledFor   DateTime?
+  publishedAt    DateTime?
+  authorId       String
+  authorName     String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@map("newsletters")
+}
+
+model Analysis {
+  id             String    @id @default(cuid())
+  title          String
+  subtitle       String?
+  content        String
+  excerpt        String?
+  type           String
+  status         String    @default("DRAFT")
+  isPremium      Boolean   @default(true)
+  slug           String    @unique
+  seoTitle       String?
+  seoDescription String?
+  ticker         String?
+  sector         String?
+  marketCap      String?
+  targetPrice    Float?
+  recommendation String?
+  publishedAt    DateTime?
+  authorId       String
+  authorName     String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@map("analyses")
+}
+
+model Selection {
+  id             String    @id @default(cuid())
+  title          String
+  subtitle       String?
+  content        String
+  excerpt        String?
+  type           String
+  status         String    @default("DRAFT")
+  isPremium      Boolean   @default(true)
+  slug           String    @unique
+  seoTitle       String?
+  seoDescription String?
+  publishedAt    DateTime?
+  authorId       String
+  authorName     String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@map("selections")
+}
+
+model Tag {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  color       String   @default("#3B82F6")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("tags")
+}
+
+model ContentTag {
+  id          String   @id @default(cuid())
+  contentId   String
+  contentType String
+  tagId       String
+  createdAt   DateTime @default(now())
+
+  @@unique([contentId, tagId, contentType])
+  @@map("content_tags")
+}
+
+model ReadHistory {
+  id           String   @id @default(cuid())
+  userId       String
+  contentType  String
+  contentId    String
+  readAt       DateTime @default(now())
+  readDuration Int?
+  readProgress Int?
+
+  @@unique([userId, contentId, contentType])
+  @@map("read_history")
+}
+
+model Favorite {
+  id          String   @id @default(cuid())
+  userId      String
+  contentType String
+  contentId   String
+  createdAt   DateTime @default(now())
+
+  @@unique([userId, contentId, contentType])
+  @@map("favorites")
+}
+
+model EmailLog {
+  id           String    @id @default(cuid())
+  userId       String
+  newsletterId String?
+  type         String
+  subject      String
+  status       String    @default("PENDING")
+  sentAt       DateTime?
+  openedAt     DateTime?
+  clickedAt    DateTime?
+  errorMessage String?
+  createdAt    DateTime  @default(now())
+
+  @@map("email_logs")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  userName  String?
+  rating    Int
+  title     String?
+  content   String
+  status    String   @default("PENDING")
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("reviews")
+}
+
+model SiteSettings {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String
+  description String?
+  category    String   @default("general")
+  isPublic    Boolean  @default(false)
+  updatedAt   DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
+model Analytics {
+  id        String   @id @default(cuid())
+  date      DateTime @db.Date
+  metric    String
+  value     Int
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@unique([date, metric])
+  @@map("analytics")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
