@@ -5,16 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b294ca24-5af0-4cdc-9e5b-8fcbda4c234f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/components/AuthLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/AuthLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/components/ProtectedRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/ProtectedRoute.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/components/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/types/auth.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/types/auth.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/components/common/ThemeToggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/common/ThemeToggle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/components/layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/layout/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/components/layout/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/layout/Navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/constants/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/constants/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/prisma.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/prisma.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/types/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/types/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/common.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/types/database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/database.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/types/next-auth.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/next-auth.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,33 +56,36 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2zagRmutqbvSGczgXkYUAyv3i2H" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "/home/andry/Bureau/workspace/financial-newsletter",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/home/andry/Bureau/workspace/financial-newsletter/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/andry/Bureau/workspace/financial-newsletter&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/andry/Bureau/workspace/financial-newsletter/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -96,7 +131,8 @@
       <updated>1751974594423</updated>
       <workItem from="1751974596950" duration="3210000" />
       <workItem from="1751979035961" duration="744000" />
-      <workItem from="1751995994131" duration="1546000" />
+      <workItem from="1751995994131" duration="4326000" />
+      <workItem from="1752011938449" duration="1377000" />
     </task>
     <servers />
   </component>
