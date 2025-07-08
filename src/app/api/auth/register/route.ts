@@ -4,14 +4,16 @@ import { z } from 'zod'
 
 import { prisma } from '@/shared/lib/prisma'
 import { AUTH_CONFIG, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/shared/lib/constants'
-import { registerSchema } from '@/features/auth/types/auth.types'
+import { registerApiSchema } from '@/features/auth/types/auth.types'
 
 export async function POST(request: NextRequest) {
     try {
         // Parse et valider les données
         const body = await request.json()
 
-        const validatedData = registerSchema.parse(body)
+        console.log('Register request body:', body) // Debug
+
+        const validatedData = registerApiSchema.parse(body)
 
         // Vérifier si l'utilisateur existe déjà
         const existingUser = await prisma.user.findUnique({
@@ -40,33 +42,37 @@ export async function POST(request: NextRequest) {
                 password: hashedPassword,
                 name: validatedData.name || null,
                 role: 'USER',
-                preferences: {
-                    create: {
-                        // Préférences par défaut
-                        receiveDaily: true,
-                        receiveWeekly: true,
-                        receiveAnalyses: true,
-                        receiveSelections: true,
-                        receiveThematic: true,
-                        emailNotifications: true,
-                        marketingEmails: false,
-                        preferredSendTime: '08:00',
-                        timezone: 'Europe/Paris',
-                        language: 'fr',
-                    },
-                },
-                // Créer un abonnement gratuit par défaut
-                subscription: {
-                    create: {
-                        plan: 'FREE',
-                        status: 'ACTIVE',
-                    },
-                },
             },
             select: {
                 id: true,
                 email: true,
                 name: true,
+            },
+        })
+
+        // Créer les préférences par défaut
+        await prisma.userPreferences.create({
+            data: {
+                userId: user.id,
+                receiveDaily: true,
+                receiveWeekly: true,
+                receiveAnalyses: true,
+                receiveSelections: true,
+                receiveThematic: true,
+                emailNotifications: true,
+                marketingEmails: false,
+                preferredSendTime: '08:00',
+                timezone: 'Europe/Paris',
+                language: 'fr',
+            },
+        })
+
+        // Créer un abonnement gratuit par défaut
+        await prisma.subscription.create({
+            data: {
+                userId: user.id,
+                plan: 'FREE',
+                status: 'ACTIVE',
             },
         })
 

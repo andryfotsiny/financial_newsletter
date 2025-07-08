@@ -6,6 +6,20 @@ import { prisma } from "./prisma"
 import { AUTH_CONFIG, ERROR_MESSAGES } from "./constants"
 import { PUBLIC_ROUTES } from "@/shared/constants/routes"
 import type { UserWithSubscription } from "@/shared/types/database"
+import type { Session } from "next-auth"
+
+// Routes qui ne nécessitent pas d'authentification
+const AUTH_FREE_ROUTES = [
+    PUBLIC_ROUTES.HOME,
+    PUBLIC_ROUTES.LOGIN,
+    PUBLIC_ROUTES.REGISTER,
+    PUBLIC_ROUTES.FORGOT_PASSWORD,
+    PUBLIC_ROUTES.ABOUT,
+    PUBLIC_ROUTES.ARCHIVES,
+    PUBLIC_ROUTES.PREMIUM,
+    PUBLIC_ROUTES.REVIEWS,
+    PUBLIC_ROUTES.DONATIONS,
+]
 
 // Configuration NextAuth v5
 export const authConfig: NextAuthConfig = {
@@ -150,29 +164,7 @@ export const authConfig: NextAuthConfig = {
     debug: process.env.NODE_ENV === "development",
 }
 
-// Import des routes pour le callback authorized
-const AUTH_FREE_ROUTES = [
-    PUBLIC_ROUTES.HOME,
-    PUBLIC_ROUTES.LOGIN,
-    PUBLIC_ROUTES.REGISTER,
-    PUBLIC_ROUTES.FORGOT_PASSWORD,
-    PUBLIC_ROUTES.ABOUT,
-    PUBLIC_ROUTES.ARCHIVES,
-    PUBLIC_ROUTES.PREMIUM,
-    PUBLIC_ROUTES.REVIEWS,
-    PUBLIC_ROUTES.DONATIONS,
-]
-
 // Helpers pour l'authentification
-import { auth } from "./auth-instance"
-import type { Session } from "next-auth"
-
-/**
- * Obtenir la session courante
- */
-export const getSession = async () => {
-    return await auth()
-}
 
 /**
  * Vérifier si un utilisateur a un rôle spécifique

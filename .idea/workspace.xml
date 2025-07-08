@@ -6,34 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b294ca24-5af0-4cdc-9e5b-8fcbda4c234f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/register/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/register/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/loading.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/components/AuthLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/AuthLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/components/ProtectedRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/ProtectedRoute.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/components/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/RegisterForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/toast.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/auth/types/auth.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/types/auth.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/components/common/ThemeToggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/common/ThemeToggle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/components/layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/layout/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/components/layout/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/layout/Navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/constants/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/constants/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/auth-instance.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/auth-instance.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/lib/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/lib/prisma.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/prisma.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/types/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/types/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/common.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/types/database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/database.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/types/next-auth.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/next-auth.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/providers/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/providers/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,22 +113,11 @@
       <workItem from="1751974596950" duration="3210000" />
       <workItem from="1751979035961" duration="744000" />
       <workItem from="1751995994131" duration="4326000" />
-      <workItem from="1752011938449" duration="1377000" />
+      <workItem from="1752011938449" duration="2783000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/providers.tsx</url>
-          <line>7</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

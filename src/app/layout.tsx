@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { APP_CONFIG } from "@/shared/lib/constants"
-import { Providers } from "@/shared/providers"
+import { RootProviders } from "./providers"
 import { Header } from "@/shared/components/layout/Header"
 import { Footer } from "@/shared/components/layout/Footer"
 
@@ -60,7 +60,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background font-sans`}
         >
-        <Providers>
+        <RootProviders>
             <div className="relative flex min-h-screen flex-col">
                 <Header />
 
@@ -70,7 +70,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
                 <Footer />
             </div>
-        </Providers>
+        </RootProviders>
         </body>
         </html>
     )

@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 
 import { RegisterForm } from '@/features/auth/components/RegisterForm'
 import { AuthLayout } from '@/features/auth/components/AuthLayout'
-import { getSession } from '@/shared/lib/auth'
+import { getSession } from '@/shared/lib/auth-instance'
 import { USER_ROUTES } from '@/shared/constants/routes'
 import { APP_CONFIG } from '@/shared/lib/constants'
 

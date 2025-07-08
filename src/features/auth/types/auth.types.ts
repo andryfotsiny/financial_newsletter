@@ -53,9 +53,26 @@ export const resetPasswordSchema = z.object({
     path: ["confirmPassword"],
 })
 
+// Schéma pour l'API d'inscription (sans confirmPassword)
+export const registerApiSchema = z.object({
+    email: z
+        .string()
+        .min(1, ERROR_MESSAGES.REQUIRED_FIELD)
+        .email(ERROR_MESSAGES.INVALID_EMAIL),
+    password: z
+        .string()
+        .min(LIMITS.minPasswordLength, ERROR_MESSAGES.PASSWORD_TOO_SHORT)
+        .regex(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+            ERROR_MESSAGES.PASSWORD_TOO_WEAK
+        ),
+    name: z.string().optional(),
+})
+
 // Types inférés depuis les schémas
 export type LoginInput = z.infer<typeof loginSchema>
 export type RegisterInput = z.infer<typeof registerSchema>
+export type RegisterApiInput = z.infer<typeof registerApiSchema>
 export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>
 export type ResetPasswordInput = z.infer<typeof resetPasswordSchema>
 
