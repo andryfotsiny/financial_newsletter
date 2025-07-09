@@ -18,10 +18,7 @@ const updatePreferencesSchema = z.object({
     language: z.string(),
 })
 
-export async function GET(
-    request: NextRequest,
-    { params }: { params: { id: string } }
-) {
+export async function GET() {
     try {
         const session = await getSession()
 
@@ -32,16 +29,9 @@ export async function GET(
             )
         }
 
-        // Vérifier que l'utilisateur demande ses propres préférences
-        if (session.user.id !== params.id) {
-            return NextResponse.json(
-                { error: ERROR_MESSAGES.UNAUTHORIZED },
-                { status: 403 }
-            )
-        }
-
+        // Utilisateur peut accéder seulement à ses propres préférences
         const preferences = await prisma.userPreferences.findUnique({
-            where: { userId: params.id },
+            where: { userId: session.user.id },
         })
 
         if (!preferences) {
@@ -61,10 +51,7 @@ export async function GET(
     }
 }
 
-export async function PATCH(
-    request: NextRequest,
-    { params }: { params: { id: string } }
-) {
+export async function PATCH(request: NextRequest) {
     try {
         const session = await getSession()
 
@@ -75,19 +62,11 @@ export async function PATCH(
             )
         }
 
-        // Vérifier que l'utilisateur modifie ses propres préférences
-        if (session.user.id !== params.id) {
-            return NextResponse.json(
-                { error: ERROR_MESSAGES.UNAUTHORIZED },
-                { status: 403 }
-            )
-        }
-
         const body = await request.json()
         const validatedData = updatePreferencesSchema.parse(body)
 
         const updatedPreferences = await prisma.userPreferences.update({
-            where: { userId: params.id },
+            where: { userId: session.user.id },
             data: validatedData,
         })
 

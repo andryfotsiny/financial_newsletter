@@ -64,7 +64,7 @@ export function Header() {
                         ) : session ? (
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                                    <Button variant="outline" className="relative h-8 w-8 rounded-full">
                                         <Avatar className="h-8 w-8">
                                             <AvatarImage src={session.user.image || undefined} />
                                             <AvatarFallback>{userInitials}</AvatarFallback>
@@ -126,7 +126,7 @@ export function Header() {
                             </DropdownMenu>
                         ) : (
                             <div className="flex items-center gap-2">
-                                <Button variant="ghost" asChild className="hidden sm:inline-flex">
+                                <Button variant="outline" asChild className="hidden sm:inline-flex">
                                     <Link href={PUBLIC_ROUTES.LOGIN}>Connexion</Link>
                                 </Button>
                                 <Button asChild>
@@ -138,7 +138,7 @@ export function Header() {
                         {/* Menu mobile */}
                         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
                             <SheetTrigger asChild>
-                                <Button variant="ghost" size="icon" className="md:hidden">
+                                <Button variant="outline" size="icon" className="md:hidden">
                                     <Menu className="h-5 w-5" />
                                     <span className="sr-only">Menu</span>
                                 </Button>

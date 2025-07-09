@@ -19,13 +19,13 @@ export default function HomePage() {
                         directement dans votre boîte mail.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button size="lg" asChild>
+                        <Button size="lg" variant="outline" asChild>
                             <Link href={PUBLIC_ROUTES.REGISTER}>
                                 Commencer gratuitement
                                 <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>
                         </Button>
-                        <Button size="lg" variant="outline" asChild>
+                        <Button size="lg" variant="secondaryOutline" asChild>
                             <Link href={PUBLIC_ROUTES.PREMIUM}>
                                 Découvrir Premium
                             </Link>

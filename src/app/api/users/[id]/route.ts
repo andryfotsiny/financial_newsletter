@@ -11,10 +11,15 @@ const updateUserSchema = z.object({
     avatar: z.string().url().optional(),
 })
 
-export async function GET(
-    request: NextRequest,
-    { params }: { params: { id: string } }
-) {
+// Utilitaire pour extraire l'id depuis l'URL NextRequest (fonctionne pour toutes les routes dynamiques)
+function extractIdFromUrl(request: NextRequest) {
+    const segments = new URL(request.url).pathname.split('/').filter(Boolean)
+    return segments[segments.length - 1] // dernier segment = id
+}
+
+export async function GET(request: NextRequest) {
+    const id = extractIdFromUrl(request)
+
     try {
         const session = await getSession()
 
@@ -25,8 +30,7 @@ export async function GET(
             )
         }
 
-        // Vérifier que l'utilisateur demande ses propres infos ou est admin
-        if (session.user.id !== params.id && session.user.role !== 'ADMIN') {
+        if (session.user.id !== id && session.user.role !== 'ADMIN') {
             return NextResponse.json(
                 { error: ERROR_MESSAGES.UNAUTHORIZED },
                 { status: 403 }
@@ -34,7 +38,7 @@ export async function GET(
         }
 
         const user = await prisma.user.findUnique({
-            where: { id: params.id },
+            where: { id },
             select: {
                 id: true,
                 email: true,
@@ -70,10 +74,9 @@ export async function GET(
     }
 }
 
-export async function PATCH(
-    request: NextRequest,
-    { params }: { params: { id: string } }
-) {
+export async function PATCH(request: NextRequest) {
+    const id = extractIdFromUrl(request)
+
     try {
         const session = await getSession()
 
@@ -84,8 +87,7 @@ export async function PATCH(
             )
         }
 
-        // Vérifier que l'utilisateur modifie ses propres infos
-        if (session.user.id !== params.id) {
+        if (session.user.id !== id) {
             return NextResponse.json(
                 { error: ERROR_MESSAGES.UNAUTHORIZED },
                 { status: 403 }
@@ -95,7 +97,6 @@ export async function PATCH(
         const body = await request.json()
         const validatedData = updateUserSchema.parse(body)
 
-        // Si l'email change, vérifier qu'il n'est pas déjà pris
         if (validatedData.email && validatedData.email !== session.user.email) {
             const existingUser = await prisma.user.findUnique({
                 where: { email: validatedData.email },
@@ -110,7 +111,7 @@ export async function PATCH(
         }
 
         const updatedUser = await prisma.user.update({
-            where: { id: params.id },
+            where: { id },
             data: validatedData,
             select: {
                 id: true,
