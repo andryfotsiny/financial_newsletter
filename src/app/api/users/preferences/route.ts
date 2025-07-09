@@ -5,10 +5,17 @@ import { getSession } from '@/shared/lib/auth-instance'
 import { prisma } from '@/shared/lib/prisma'
 import { ERROR_MESSAGES } from '@/shared/lib/constants'
 
-const updateUserSchema = z.object({
-    name: z.string().min(2).optional(),
-    email: z.string().email().optional(),
-    avatar: z.string().url().optional(),
+const updatePreferencesSchema = z.object({
+    receiveDaily: z.boolean(),
+    receiveWeekly: z.boolean(),
+    receiveAnalyses: z.boolean(),
+    receiveSelections: z.boolean(),
+    receiveThematic: z.boolean(),
+    emailNotifications: z.boolean(),
+    marketingEmails: z.boolean(),
+    preferredSendTime: z.string(),
+    timezone: z.string(),
+    language: z.string(),
 })
 
 export async function GET(
@@ -25,44 +32,28 @@ export async function GET(
             )
         }
 
-        // Vérifier que l'utilisateur demande ses propres infos ou est admin
-        if (session.user.id !== params.id && session.user.role !== 'ADMIN') {
+        // Vérifier que l'utilisateur demande ses propres préférences
+        if (session.user.id !== params.id) {
             return NextResponse.json(
                 { error: ERROR_MESSAGES.UNAUTHORIZED },
                 { status: 403 }
             )
         }
 
-        const user = await prisma.user.findUnique({
-            where: { id: params.id },
-            select: {
-                id: true,
-                email: true,
-                name: true,
-                avatar: true,
-                role: true,
-                createdAt: true,
-                subscription: {
-                    select: {
-                        plan: true,
-                        status: true,
-                        currentPeriodEnd: true,
-                    }
-                },
-                preferences: true,
-            }
+        const preferences = await prisma.userPreferences.findUnique({
+            where: { userId: params.id },
         })
 
-        if (!user) {
+        if (!preferences) {
             return NextResponse.json(
-                { error: ERROR_MESSAGES.USER_NOT_FOUND },
+                { error: 'Préférences non trouvées' },
                 { status: 404 }
             )
         }
 
-        return NextResponse.json({ user })
+        return NextResponse.json({ preferences })
     } catch (error) {
-        console.error('Get user error:', error)
+        console.error('Get preferences error:', error)
         return NextResponse.json(
             { error: ERROR_MESSAGES.SOMETHING_WENT_WRONG },
             { status: 500 }
@@ -84,7 +75,7 @@ export async function PATCH(
             )
         }
 
-        // Vérifier que l'utilisateur modifie ses propres infos
+        // Vérifier que l'utilisateur modifie ses propres préférences
         if (session.user.id !== params.id) {
             return NextResponse.json(
                 { error: ERROR_MESSAGES.UNAUTHORIZED },
@@ -93,39 +84,19 @@ export async function PATCH(
         }
 
         const body = await request.json()
-        const validatedData = updateUserSchema.parse(body)
+        const validatedData = updatePreferencesSchema.parse(body)
 
-        // Si l'email change, vérifier qu'il n'est pas déjà pris
-        if (validatedData.email && validatedData.email !== session.user.email) {
-            const existingUser = await prisma.user.findUnique({
-                where: { email: validatedData.email },
-            })
-
-            if (existingUser) {
-                return NextResponse.json(
-                    { error: 'Cet email est déjà utilisé' },
-                    { status: 400 }
-                )
-            }
-        }
-
-        const updatedUser = await prisma.user.update({
-            where: { id: params.id },
+        const updatedPreferences = await prisma.userPreferences.update({
+            where: { userId: params.id },
             data: validatedData,
-            select: {
-                id: true,
-                email: true,
-                name: true,
-                avatar: true,
-            }
         })
 
         return NextResponse.json({
             success: true,
-            user: updatedUser,
+            preferences: updatedPreferences,
         })
     } catch (error) {
-        console.error('Update user error:', error)
+        console.error('Update preferences error:', error)
 
         if (error instanceof z.ZodError) {
             return NextResponse.json(

@@ -3,13 +3,16 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import bcrypt from "bcryptjs"
 import { prisma } from "./prisma"
-import { AUTH_CONFIG, ERROR_MESSAGES } from "./constants"
+import { AUTH_CONFIG } from "./constants"
 import { PUBLIC_ROUTES } from "@/shared/constants/routes"
 import type { UserWithSubscription } from "@/shared/types/database"
 import type { Session } from "next-auth"
 
-// Routes qui ne nécessitent pas d'authentification
-const AUTH_FREE_ROUTES = [
+// Définition stricte des credentials pour TypeScript
+type Credentials = { email: string; password: string }
+
+// Routes publiques
+const AUTH_FREE_ROUTES: string[] = [
     PUBLIC_ROUTES.HOME,
     PUBLIC_ROUTES.LOGIN,
     PUBLIC_ROUTES.REGISTER,
@@ -21,7 +24,7 @@ const AUTH_FREE_ROUTES = [
     PUBLIC_ROUTES.DONATIONS,
 ]
 
-// Configuration NextAuth v5
+// NextAuth config
 export const authConfig: NextAuthConfig = {
     adapter: PrismaAdapter(prisma),
     providers: [
@@ -39,16 +42,16 @@ export const authConfig: NextAuthConfig = {
                 }
             },
             async authorize(credentials) {
-                // Validation des inputs
-                if (!credentials?.email || !credentials?.password) {
-                    return null
-                }
+                // Typage sûr des credentials
+                const { email, password } = credentials as Credentials
+
+                if (!email || !password) return null
 
                 try {
-                    // Recherche de l'utilisateur avec sa subscription
+                    // Recherche utilisateur avec abonnement
                     const user = await prisma.user.findUnique({
                         where: {
-                            email: credentials.email.toLowerCase()
+                            email: email.toLowerCase()
                         },
                         include: {
                             subscription: {
@@ -60,27 +63,16 @@ export const authConfig: NextAuthConfig = {
                         }
                     }) as UserWithSubscription | null
 
-                    // Vérification de l'existence de l'utilisateur
-                    if (!user) {
-                        return null
-                    }
+                    if (!user) return null
+                    if (!user.isActive) return null
 
-                    // Vérification du compte actif
-                    if (!user.isActive) {
-                        return null
-                    }
-
-                    // Vérification du mot de passe
                     const isPasswordValid = await bcrypt.compare(
-                        credentials.password,
+                        password,
                         user.password
                     )
+                    if (!isPasswordValid) return null
 
-                    if (!isPasswordValid) {
-                        return null
-                    }
-
-                    // Retour des données utilisateur pour la session
+                    // On renvoie ce qui sera inclus dans le JWT
                     return {
                         id: user.id,
                         email: user.email,
@@ -110,21 +102,17 @@ export const authConfig: NextAuthConfig = {
     callbacks: {
         authorized({ auth, request: { nextUrl } }) {
             const isLoggedIn = !!auth?.user
-            const isPublicRoute = AUTH_FREE_ROUTES.includes(nextUrl.pathname)
+            // On autorise toutes les routes publiques
+            const isPublicRoute = AUTH_FREE_ROUTES.includes(nextUrl.pathname as string)
 
-            if (isPublicRoute) {
-                return true
-            }
-
-            if (isLoggedIn) {
-                return true
-            }
+            if (isPublicRoute) return true
+            if (isLoggedIn) return true
 
             return false
         },
 
         jwt({ token, user }) {
-            // Premier login - on ajoute les infos user au token
+            // Ajout des infos de l'user au JWT à la connexion
             if (user) {
                 token.id = user.id
                 token.email = user.email
@@ -133,79 +121,50 @@ export const authConfig: NextAuthConfig = {
                 token.subscriptionPlan = user.subscriptionPlan
                 token.subscriptionStatus = user.subscriptionStatus
             }
-
             return token
         },
 
         session({ session, token }) {
-            // Ajouter les infos du token à la session
+            // On copie tout du JWT dans la session NextAuth
             if (token && session.user) {
                 session.user.id = token.id as string
                 session.user.email = token.email as string
                 session.user.name = token.name as string | null
                 session.user.role = token.role as "USER" | "EDITOR" | "ADMIN"
-                session.user.subscriptionPlan = token.subscriptionPlan as any
-                session.user.subscriptionStatus = token.subscriptionStatus as any
+                session.user.subscriptionPlan = token.subscriptionPlan as "FREE" | "PREMIUM" | "ENTERPRISE" | null
+                session.user.subscriptionStatus = token.subscriptionStatus as
+                    | "ACTIVE"
+                    | "INACTIVE"
+                    | "CANCELLED"
+                    | "PAST_DUE"
+                    | "TRIALING"
+                    | null
             }
-
             return session
         },
     },
 
     events: {
-        async signIn(message) {
-            console.log(`User ${message.user.email} signed in`)
-        },
-        async signOut(message) {
-            console.log(`Session ended`)
-        }
+        async signIn() {},
+        async signOut() {},
     },
 
     debug: process.env.NODE_ENV === "development",
 }
 
-// Helpers pour l'authentification
+// Helpers d’authentification
 
-/**
- * Vérifier si un utilisateur a un rôle spécifique
- */
 export const hasRole = (user: Session["user"] | null, role: string): boolean => {
     if (!user) return false
     return user.role === role
 }
-
-/**
- * Vérifier si un utilisateur est admin
- */
-export const isAdmin = (user: Session["user"] | null): boolean => {
-    return hasRole(user, "ADMIN")
-}
-
-/**
- * Vérifier si un utilisateur est éditeur
- */
-export const isEditor = (user: Session["user"] | null): boolean => {
-    return hasRole(user, "EDITOR")
-}
-
-/**
- * Vérifier si un utilisateur a un abonnement actif
- */
-export const hasActiveSubscription = (user: Session["user"] | null): boolean => {
-    if (!user) return false
-    return user.subscriptionStatus === "ACTIVE"
-}
-
-/**
- * Vérifier si un utilisateur a accès au contenu premium
- */
+export const isAdmin = (user: Session["user"] | null): boolean => hasRole(user, "ADMIN")
+export const isEditor = (user: Session["user"] | null): boolean => hasRole(user, "EDITOR")
+export const hasActiveSubscription = (user: Session["user"] | null): boolean =>
+    !!user && user.subscriptionStatus === "ACTIVE"
 export const hasPremiumAccess = (user: Session["user"] | null): boolean => {
     if (!user) return false
-
-    // Les admins et éditeurs ont toujours accès
     if (isAdmin(user) || isEditor(user)) return true
-
-    // Vérifier l'abonnement actif et le plan
     return hasActiveSubscription(user) &&
         (user.subscriptionPlan === "PREMIUM" || user.subscriptionPlan === "ENTERPRISE")
 }

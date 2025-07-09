@@ -4,7 +4,6 @@ import { ArrowRight, TrendingUp, FileText, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { PUBLIC_ROUTES } from '@/shared/constants/routes'
-import { APP_CONFIG } from '@/shared/lib/constants'
 
 export default function HomePage() {
     return (

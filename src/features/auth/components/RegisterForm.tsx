@@ -63,7 +63,7 @@ export function RegisterForm() {
 
             // Redirection vers la page de connexion
             router.push(PUBLIC_ROUTES.LOGIN)
-        } catch (error) {
+        } catch {
             setError(ERROR_MESSAGES.SOMETHING_WENT_WRONG)
         } finally {
             setIsLoading(false)

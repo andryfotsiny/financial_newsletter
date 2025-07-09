@@ -1,6 +1,5 @@
 import { auth } from "@/shared/lib/auth-instance"
 import { NextResponse } from "next/server"
-import type { NextRequest } from "next/server"
 import { PUBLIC_ROUTES, ADMIN_ROUTES } from "@/shared/constants/routes"
 
 // Routes qui ne nécessitent pas d'authentification

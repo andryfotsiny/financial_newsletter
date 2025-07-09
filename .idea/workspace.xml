@@ -6,15 +6,58 @@
   <component name="ChangeListManager">
     <list default="true" id="b294ca24-5af0-4cdc-9e5b-8fcbda4c234f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/auth/register/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/register/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/toast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/types/auth.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/types/auth.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/lib/auth-instance.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/auth-instance.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/forgot-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/forgot-password/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/account/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/account/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/account/preferences/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/account/preferences/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/account/subscription/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/account/subscription/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/favorites/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/favorites/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(public)/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/about/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(public)/archives/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/archives/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(public)/archives/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/archives/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(public)/donations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/donations/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(public)/premium/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/premium/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(public)/reviews/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/reviews/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/analyses/[id]/edit/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/analyses/create/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/analyses/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/analytics/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/newsletters/[id]/edit/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/newsletters/[id]/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/newsletters/create/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/newsletters/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/selections/create/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/selections/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/settings/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/users/[id]/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/users/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/analyses/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/analyses/[id]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/analyses/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/analyses/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/email/send/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/email/send/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/email/webhook/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/email/webhook/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/newsletters/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/newsletters/[id]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/newsletters/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/newsletters/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/selections/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/selections/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/subscriptions/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/subscriptions/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/upload/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/upload/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/users/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/users/[id]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/users/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/users/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/components/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/user/components/UserPreferences.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/user/components/UserPreferences.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/user/components/UserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/user/components/UserProfile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/hooks/use-toast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/hooks/use-toast.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/providers/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/providers/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/types/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/types/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/common.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +67,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -78,6 +121,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/features/user/components" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -114,10 +158,23 @@
       <workItem from="1751979035961" duration="744000" />
       <workItem from="1751995994131" duration="4326000" />
       <workItem from="1752011938449" duration="2783000" />
+      <workItem from="1752038578888" duration="14160000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/shared/types/api.ts</url>
+          <line>2</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

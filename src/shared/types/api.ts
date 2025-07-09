@@ -132,7 +132,7 @@ export interface SendEmailRequest {
     to: string | string[]
     subject: string
     type: EmailType
-    templateData?: Record<string, any>
+    templateData?: Record<string, unknown>
     newsletterId?: string
 }
 
@@ -183,13 +183,13 @@ export interface AnalyticsQuery {
 export interface AnalyticsData {
     date: string
     value: number
-    metadata?: Record<string, any>
+    metadata?: Record<string, unknown>
 }
 
 // Types pour les webhooks
 export interface WebhookPayload {
     event: string
-    data: Record<string, any>
+    data: Record<string, unknown>
     timestamp: string
     signature?: string
 }

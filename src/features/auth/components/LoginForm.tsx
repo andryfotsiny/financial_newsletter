@@ -19,6 +19,7 @@ import { loginSchema, type LoginInput } from '../types/auth.types'
 import { PUBLIC_ROUTES, USER_ROUTES } from '@/shared/constants/routes'
 import { SUCCESS_MESSAGES, ERROR_MESSAGES } from '@/shared/lib/constants'
 
+
 export function LoginForm() {
     const router = useRouter()
     const { toast } = useToast()
@@ -57,7 +58,7 @@ export function LoginForm() {
             // Redirection vers le dashboard
             router.push(USER_ROUTES.DASHBOARD)
             router.refresh()
-        } catch (error) {
+        } catch  {
             setError(ERROR_MESSAGES.SOMETHING_WENT_WRONG)
         } finally {
             setIsLoading(false)
