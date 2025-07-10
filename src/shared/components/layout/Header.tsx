@@ -64,7 +64,7 @@ export function Header() {
                         ) : session ? (
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="outline" className="relative h-8 w-8 rounded-full">
+                                    <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                                         <Avatar className="h-8 w-8">
                                             <AvatarImage src={session.user.image || undefined} />
                                             <AvatarFallback>{userInitials}</AvatarFallback>
@@ -109,7 +109,7 @@ export function Header() {
                                         <>
                                             <DropdownMenuSeparator />
                                             <DropdownMenuItem asChild>
-                                                <Link href={ADMIN_ROUTES.DASHBOARD} className="text-primary">
+                                                <Link href={ADMIN_ROUTES.DASHBOARD} className="text-primary font-medium">
                                                     <Settings className="mr-2 h-4 w-4" />
                                                     Administration
                                                 </Link>
@@ -126,11 +126,11 @@ export function Header() {
                             </DropdownMenu>
                         ) : (
                             <div className="flex items-center gap-2">
-                                <Button variant="outline" asChild className="hidden sm:inline-flex">
+                                <Button variant="ghost" asChild className="hidden sm:inline-flex">
                                     <Link href={PUBLIC_ROUTES.LOGIN}>Connexion</Link>
                                 </Button>
                                 <Button asChild>
-                                    <Link href={PUBLIC_ROUTES.REGISTER}>S&#39;inscrire</Link>
+                                    <Link href={PUBLIC_ROUTES.REGISTER}>S'inscrire</Link>
                                 </Button>
                             </div>
                         )}
@@ -138,7 +138,7 @@ export function Header() {
                         {/* Menu mobile */}
                         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
                             <SheetTrigger asChild>
-                                <Button variant="outline" size="icon" className="md:hidden">
+                                <Button variant="ghost" size="icon" className="md:hidden">
                                     <Menu className="h-5 w-5" />
                                     <span className="sr-only">Menu</span>
                                 </Button>

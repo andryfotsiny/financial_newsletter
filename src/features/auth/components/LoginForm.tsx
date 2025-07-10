@@ -16,9 +16,8 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { useToast } from '@/shared/hooks/use-toast'
 
 import { loginSchema, type LoginInput } from '../types/auth.types'
-import { PUBLIC_ROUTES, USER_ROUTES } from '@/shared/constants/routes'
+import { PUBLIC_ROUTES, USER_ROUTES, ADMIN_ROUTES } from '@/shared/constants/routes'
 import { SUCCESS_MESSAGES, ERROR_MESSAGES } from '@/shared/lib/constants'
-
 
 export function LoginForm() {
     const router = useRouter()
@@ -55,10 +54,21 @@ export function LoginForm() {
                 description: "Vous allez être redirigé...",
             })
 
-            // Redirection vers le dashboard
-            router.push(USER_ROUTES.DASHBOARD)
-            router.refresh()
-        } catch  {
+            // Redirection selon le rôle
+            if (result.ok) {
+                // Récupérer la session pour vérifier le rôle
+                const response = await fetch('/api/auth/session')
+                const session = await response.json()
+
+                if (session?.user?.role === 'ADMIN') {
+                    router.push(ADMIN_ROUTES.DASHBOARD)
+                } else {
+                    router.push(USER_ROUTES.DASHBOARD)
+                }
+                router.refresh()
+            }
+        } catch (error) {
+            console.error('Login error:', error)
             setError(ERROR_MESSAGES.SOMETHING_WENT_WRONG)
         } finally {
             setIsLoading(false)

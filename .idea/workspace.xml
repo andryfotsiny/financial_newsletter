@@ -6,15 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="b294ca24-5af0-4cdc-9e5b-8fcbda4c234f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/users/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/users/[id]/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/users/preferences/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/users/preferences/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(public)/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/about/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(public)/archives/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/archives/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(public)/archives/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/archives/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/newsletters/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/newsletters/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/components/common/ThemeToggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/common/ThemeToggle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/admin/components/AdminDashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/admin/components/AdminDashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/admin/components/AdminSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/admin/components/AdminSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/admin/hooks/useAdmin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/admin/hooks/useAdmin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/content/components/ContentArchive.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/content/components/ContentArchive.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/content/components/ContentFilters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/content/components/ContentFilters.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/newsletter/components/NewsletterEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/newsletter/components/NewsletterEditor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/newsletter/components/NewsletterFilters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/newsletter/components/NewsletterFilters.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/newsletter/components/NewsletterList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/newsletter/components/NewsletterList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/newsletter/services/newsletterService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/newsletter/services/newsletterService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/newsletter/types/newsletter.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/newsletter/types/newsletter.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware/auth-middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware/auth-middleware.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/providers/theme-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/providers/theme-provider.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,14 +35,26 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;andryfotsiny&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/andryfotsiny/financial_newsletter.git&quot;,
+    &quot;accountId&quot;: &quot;4ddf162e-8422-4f42-bce3-d2c134f20d3c&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -78,6 +101,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/(public)" />
       <recent name="$PROJECT_DIR$/src/features/user/components" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -116,7 +140,10 @@
       <workItem from="1751995994131" duration="4326000" />
       <workItem from="1752011938449" duration="2783000" />
       <workItem from="1752038578888" duration="18133000" />
-      <workItem from="1752059203666" duration="1318000" />
+      <workItem from="1752059203666" duration="9610000" />
+      <workItem from="1752072740442" duration="40000" />
+      <workItem from="1752095683474" duration="2531000" />
+      <workItem from="1752128142204" duration="5566000" />
     </task>
     <servers />
   </component>
@@ -130,6 +157,11 @@
           <url>file://$PROJECT_DIR$/src/shared/types/api.ts</url>
           <line>2</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/features/admin/hooks/useAdmin.ts</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

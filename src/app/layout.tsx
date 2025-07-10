@@ -1,19 +1,12 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Inter } from "next/font/google"       // <--- ICI
 import "./globals.css"
 import { APP_CONFIG } from "@/shared/lib/constants"
 import { RootProviders } from "./providers"
-import { Header } from "@/shared/components/layout/Header"
-import { Footer } from "@/shared/components/layout/Footer"
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
+const inter = Inter({
     subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
+    variable: "--font-inter",
 })
 
 export const metadata: Metadata = {
@@ -49,7 +42,6 @@ export const metadata: Metadata = {
     },
 }
 
-// Providers seront ajoutés dans la prochaine phase
 interface RootLayoutProps {
     children: React.ReactNode
 }
@@ -57,19 +49,9 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="fr" suppressHydrationWarning>
-        <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background font-sans`}
-        >
+        <body className={`${inter.variable} antialiased min-h-screen bg-background font-sans`}>
         <RootProviders>
-            <div className="relative flex min-h-screen flex-col">
-                <Header />
-
-                <main className="flex-1">
-                    {children}
-                </main>
-
-                <Footer />
-            </div>
+            {children}
         </RootProviders>
         </body>
         </html>
