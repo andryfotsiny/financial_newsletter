@@ -12,6 +12,7 @@ import { getNewsletterTypeLabel } from '@/features/newsletter/types/newsletter.t
 import { PUBLIC_ROUTES } from '@/shared/constants/routes'
 import { getSession } from '@/shared/lib/auth-instance'
 import { hasPremiumAccess } from '@/shared/lib/auth'
+import {NewsletterType} from "@/shared/types/database";
 
 interface PageProps {
     params: Promise<{ slug: string }>
@@ -90,7 +91,7 @@ export default async function NewsletterDetailPage({ params }: PageProps) {
             <header className="space-y-4 mb-8">
                 <div className="flex items-center gap-2 flex-wrap">
                     <Badge variant="outline">
-                        {getNewsletterTypeLabel(newsletter.type as any)}
+                        {getNewsletterTypeLabel(newsletter.type as NewsletterType)}
                     </Badge>
                     {newsletter.isPremium && (
                         <Badge variant="default">
@@ -144,7 +145,7 @@ export default async function NewsletterDetailPage({ params }: PageProps) {
                         <h3 className="text-xl font-semibold">Contenu Premium</h3>
                         <p className="text-muted-foreground max-w-md mx-auto">
                             Cette newsletter est réservée aux abonnés Premium.
-                            Abonnez-vous pour accéder à l'intégralité de nos analyses.
+                            Abonnez-vous pour accéder à l&#39;intégralité de nos analyses.
                         </p>
                         <div className="flex gap-4 justify-center">
                             {session ? (
@@ -162,7 +163,7 @@ export default async function NewsletterDetailPage({ params }: PageProps) {
                                     </Button>
                                     <Button asChild>
                                         <Link href={PUBLIC_ROUTES.REGISTER}>
-                                            S'inscrire
+                                            S&#39;inscrire
                                         </Link>
                                     </Button>
                                 </>

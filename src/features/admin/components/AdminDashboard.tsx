@@ -14,16 +14,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { ADMIN_ROUTES } from '@/shared/constants/routes'
 
-interface AdminDashboardProps {
-    stats: {
-        totalUsers: number
-        activeSubscriptions: number
-        totalNewsletters: number
-        totalAnalyses: number
-        monthlyRevenue: number
-        dailyActiveUsers: number
-    }
-}
+
 
 export async function AdminDashboard() {
     // Récupérer les statistiques

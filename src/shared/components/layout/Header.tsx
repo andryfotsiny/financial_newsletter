@@ -130,7 +130,7 @@ export function Header() {
                                     <Link href={PUBLIC_ROUTES.LOGIN}>Connexion</Link>
                                 </Button>
                                 <Button asChild>
-                                    <Link href={PUBLIC_ROUTES.REGISTER}>S'inscrire</Link>
+                                    <Link href={PUBLIC_ROUTES.REGISTER}>S&#39;inscrire</Link>
                                 </Button>
                             </div>
                         )}

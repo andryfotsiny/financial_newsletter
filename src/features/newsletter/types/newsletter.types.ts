@@ -18,17 +18,17 @@ export const ContentStatus = {
 export type NewsletterType = typeof NewsletterType[keyof typeof NewsletterType]
 export type ContentStatus = typeof ContentStatus[keyof typeof ContentStatus]
 
-// Schémas de validation
 export const createNewsletterSchema = z.object({
     title: z.string().min(3, 'Le titre doit contenir au moins 3 caractères'),
     subtitle: z.string().optional(),
     content: z.string().min(10, 'Le contenu doit contenir au moins 10 caractères'),
     excerpt: z.string().max(500, 'L\'extrait ne doit pas dépasser 500 caractères').optional(),
     type: z.enum(['DAILY', 'WEEKLY', 'SPECIAL']),
-    isPremium: z.boolean().default(false),
-    status: z.enum(['DRAFT', 'SCHEDULED', 'PUBLISHED', 'ARCHIVED']).default('DRAFT'),
+    isPremium: z.boolean(),
+    status: z.enum(['DRAFT', 'SCHEDULED', 'PUBLISHED', 'ARCHIVED']),
     scheduledFor: z.string().datetime().optional(),
 })
+
 
 export const updateNewsletterSchema = createNewsletterSchema.partial()
 

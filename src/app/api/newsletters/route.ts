@@ -7,6 +7,7 @@ import { isAdmin, isEditor } from '@/shared/lib/auth'
 import { ERROR_MESSAGES } from '@/shared/lib/constants'
 import { createNewsletterSchema } from '@/features/newsletter/types/newsletter.types'
 import { slugify } from '@/shared/lib/utils'
+import type { Prisma } from '@prisma/client'
 
 // GET /api/newsletters - Liste des newsletters
 export async function GET(request: NextRequest) {
@@ -15,7 +16,7 @@ export async function GET(request: NextRequest) {
         const { searchParams } = new URL(request.url)
 
         // Construire les filtres
-        const where: Record<string, any> = {}
+        const where: Prisma.NewsletterWhereInput = {}
 
         // Filtres publics vs admin
         if (!session || (!isAdmin(session.user) && !isEditor(session.user))) {

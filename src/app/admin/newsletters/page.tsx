@@ -1,12 +1,13 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Plus } from 'lucide-react'
-
 import { Button } from '@/components/ui/button'
 import { prisma } from '@/shared/lib/prisma'
 import { NewsletterList } from '@/features/newsletter/components/NewsletterList'
 import { NewsletterFilters } from '@/features/newsletter/components/NewsletterFilters'
 import { ADMIN_ROUTES } from '@/shared/constants/routes'
+import type { NewsletterListItem } from '@/features/newsletter/types/newsletter.types'
+import type { Prisma } from '@prisma/client'
 
 export const metadata: Metadata = {
     title: 'Newsletters - Administration',
@@ -25,15 +26,15 @@ export default async function NewslettersAdminPage({ searchParams }: PageProps) 
     // Attendre les searchParams
     const params = await searchParams
 
-    // Construire les filtres depuis les query params
-    const where: Record<string, any> = {}
+    // Correction ici :
+    const where: Prisma.NewsletterWhereInput = {}
 
     if (params?.type) {
-        where.type = params.type
+        where.type = params.type as NewsletterListItem["type"]
     }
 
     if (params?.status) {
-        where.status = params.status
+        where.status = params.status as NewsletterListItem["status"]
     }
 
     if (params?.search) {
@@ -43,7 +44,7 @@ export default async function NewslettersAdminPage({ searchParams }: PageProps) 
         ]
     }
 
-    // Récupérer les newsletters
+    // Le retour est déjà au bon type
     const newsletters = await prisma.newsletter.findMany({
         where,
         select: {
@@ -56,10 +57,8 @@ export default async function NewslettersAdminPage({ searchParams }: PageProps) 
             scheduledFor: true,
             authorName: true,
         },
-        orderBy: {
-            createdAt: 'desc',
-        },
-    })
+        orderBy: { createdAt: 'desc' },
+    }) as NewsletterListItem[];
 
     return (
         <div className="space-y-6">
@@ -82,7 +81,7 @@ export default async function NewslettersAdminPage({ searchParams }: PageProps) 
             <NewsletterFilters />
 
             {/* Liste */}
-            <NewsletterList newsletters={newsletters as any} />
+            <NewsletterList newsletters={newsletters} />
         </div>
     )
 }

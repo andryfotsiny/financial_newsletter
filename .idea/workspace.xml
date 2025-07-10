@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b294ca24-5af0-4cdc-9e5b-8fcbda4c234f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(public)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(public)/archives/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/archives/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/newsletters/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/newsletters/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/newsletters/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/newsletters/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/admin/components/AdminDashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/admin/components/AdminDashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/content/components/ContentArchive.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/content/components/ContentArchive.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/newsletter/types/newsletter.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/newsletter/types/newsletter.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +134,7 @@
       <workItem from="1752072740442" duration="40000" />
       <workItem from="1752095683474" duration="2531000" />
       <workItem from="1752128142204" duration="12887000" />
-      <workItem from="1752150033865" duration="1051000" />
+      <workItem from="1752150033865" duration="3844000" />
     </task>
     <servers />
   </component>

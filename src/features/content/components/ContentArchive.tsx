@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Calendar, Clock, Lock } from 'lucide-react'
+import { Calendar, Lock } from 'lucide-react'
 
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { formatDate } from '@/shared/lib/utils'
 import { PUBLIC_ROUTES } from '@/shared/constants/routes'
 import { getNewsletterTypeLabel } from '@/features/newsletter/types/newsletter.types'
+import {NewsletterType} from "@/shared/types/database";
 
 interface ContentItem {
     id: string
@@ -71,7 +72,7 @@ export function ContentArchive({ items, currentPage, totalPages }: ContentArchiv
 
                             <div className="flex items-center gap-4 mt-4 text-xs text-muted-foreground">
                                 <Badge variant="outline">
-                                    {getNewsletterTypeLabel(item.type as any)}
+                                    {getNewsletterTypeLabel(item.type as NewsletterType )}
                                 </Badge>
 
                                 {item.publishedAt && (
