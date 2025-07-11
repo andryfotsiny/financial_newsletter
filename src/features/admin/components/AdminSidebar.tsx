@@ -1,3 +1,4 @@
+//src/features/admin/components/AdminSidebar.tsx
 'use client'
 
 import Link from 'next/link'
@@ -11,14 +12,14 @@ import {
     Mail,
     Tags,
     ArrowLeft,
-    FolderOpen
+    FolderOpen,
+    Send
 } from 'lucide-react'
 
 import { cn } from '@/shared/lib/utils'
 import { ADMIN_ROUTES, PUBLIC_ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/components/ui/button'
 import { APP_CONFIG } from '@/shared/lib/constants'
-
 const menuItems = [
     {
         title: 'Dashboard',
@@ -44,6 +45,11 @@ const menuItems = [
         title: 'Utilisateurs',
         href: ADMIN_ROUTES.USERS,
         icon: Users,
+    },
+    {
+        title: 'Emails',
+        href: '/admin/emails',
+        icon: Send,
     },
     {
         title: 'Tags',

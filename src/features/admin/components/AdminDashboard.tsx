@@ -10,9 +10,8 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { prisma } from '@/shared/lib/prisma'
 import { cn } from '@/shared/lib/utils'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import { ADMIN_ROUTES } from '@/shared/constants/routes'
+
+// import { ADMIN_ROUTES } from '@/shared/constants/routes'
 
 
 
@@ -107,7 +106,7 @@ export async function AdminDashboard() {
                                 <p className={cn(
                                     "text-xs mt-1",
                                     stat.changeType === 'positive'
-                                        ? "text-green-600"
+                                        ? "text-white"
                                         : "text-red-600"
                                 )}>
                                     {stat.change} par rapport au mois dernier
@@ -117,41 +116,6 @@ export async function AdminDashboard() {
                     )
                 })}
             </div>
-
-            {/* Actions rapides */}
-            <Card>
-                <CardHeader>
-                    <CardTitle>Actions rapides</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                        <Button asChild>
-                            <Link href={ADMIN_ROUTES.NEWSLETTER_CREATE}>
-                                <Mail className="mr-2 h-4 w-4" />
-                                Nouvelle newsletter
-                            </Link>
-                        </Button>
-                        <Button asChild variant="outline">
-                            <Link href={ADMIN_ROUTES.ANALYSIS_CREATE}>
-                                <TrendingUp className="mr-2 h-4 w-4" />
-                                Nouvelle analyse
-                            </Link>
-                        </Button>
-                        <Button asChild variant="outline">
-                            <Link href={ADMIN_ROUTES.USERS}>
-                                <Users className="mr-2 h-4 w-4" />
-                                Gérer utilisateurs
-                            </Link>
-                        </Button>
-                        <Button asChild variant="outline">
-                            <Link href={ADMIN_ROUTES.ANALYTICS}>
-                                <Activity className="mr-2 h-4 w-4" />
-                                Voir analytics
-                            </Link>
-                        </Button>
-                    </div>
-                </CardContent>
-            </Card>
 
             {/* Activité récente */}
             <Card>

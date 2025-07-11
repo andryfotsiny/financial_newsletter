@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/lib/utils'
 import { PUBLIC_ROUTES } from '@/shared/constants/routes'
 
 interface NavigationProps {
@@ -31,6 +31,7 @@ const navItems = [
         title: 'Avis',
         href: PUBLIC_ROUTES.REVIEWS,
     },
+
 ]
 
 export function Navigation({ className, onLinkClick }: NavigationProps) {

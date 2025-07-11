@@ -11,7 +11,7 @@ import {
     LogOut
 } from 'lucide-react'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/lib/utils'
 import { USER_ROUTES } from '@/shared/constants/routes'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
