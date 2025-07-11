@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { prisma } from '@/shared/lib/prisma'
 import { ContentArchive } from '@/features/content/components/ContentArchive'
 import { ContentFilters } from '@/features/content/components/ContentFilters'
 
@@ -8,61 +7,58 @@ export const metadata: Metadata = {
     description: 'Consultez toutes nos newsletters et analyses',
 }
 
-interface PageProps {
-    searchParams: Promise<{
-        type?: string
-        search?: string
-        page?: string
-    }>
-}
 
-export default async function ArchivesPage({ searchParams }: PageProps) {
-    const params = await searchParams
-    const page = Number(params?.page) || 1
-    const limit = 12
-    const skip = (page - 1) * limit
 
-    // Construire les filtres
-    const where: Record<string, unknown> = {
-        status: 'PUBLISHED', // Seulement les newsletters publiées
-    }
+export default async function ArchivesPage() {
+    // Pour la démonstration client, on utilise des données statiques
+    // Plus tard, vous pourrez remettre la logique Prisma
 
-    if (params?.type && params.type !== 'all') {
-        where.type = params.type
-    }
+    // const params = await searchParams
+    // const page = Number(params?.page) || 1
+    // const limit = 12
+    // const skip = (page - 1) * limit
 
-    if (params?.search) {
-        where.OR = [
-            { title: { contains: params.search, mode: 'insensitive' } },
-            { excerpt: { contains: params.search, mode: 'insensitive' } },
-        ]
-    }
+    // // Construire les filtres
+    // const where: Record<string, unknown> = {
+    //     status: 'PUBLISHED', // Seulement les newsletters publiées
+    // }
 
-    // Récupérer les newsletters
-    const [newsletters, totalCount] = await Promise.all([
-        prisma.newsletter.findMany({
-            where,
-            select: {
-                id: true,
-                title: true,
-                subtitle: true,
-                excerpt: true,
-                type: true,
-                isPremium: true,
-                slug: true,
-                publishedAt: true,
-                authorName: true,
-            },
-            orderBy: {
-                publishedAt: 'desc',
-            },
-            skip,
-            take: limit,
-        }),
-        prisma.newsletter.count({ where }),
-    ])
+    // if (params?.type && params.type !== 'all') {
+    //     where.type = params.type
+    // }
 
-    const totalPages = Math.ceil(totalCount / limit)
+    // if (params?.search) {
+    //     where.OR = [
+    //         { title: { contains: params.search, mode: 'insensitive' } },
+    //         { excerpt: { contains: params.search, mode: 'insensitive' } },
+    //     ]
+    // }
+
+    // // Récupérer les newsletters
+    // const [newsletters, totalCount] = await Promise.all([
+    //     prisma.newsletter.findMany({
+    //         where,
+    //         select: {
+    //             id: true,
+    //             title: true,
+    //             subtitle: true,
+    //             excerpt: true,
+    //             type: true,
+    //             isPremium: true,
+    //             slug: true,
+    //             publishedAt: true,
+    //             authorName: true,
+    //         },
+    //         orderBy: {
+    //             publishedAt: 'desc',
+    //         },
+    //         skip,
+    //         take: limit,
+    //     }),
+    //     prisma.newsletter.count({ where }),
+    // ])
+
+    // const totalPages = Math.ceil(totalCount / limit)
 
     return (
         <div className="container mx-auto px-4 py-8">
@@ -78,12 +74,8 @@ export default async function ArchivesPage({ searchParams }: PageProps) {
                 {/* Filtres */}
                 <ContentFilters />
 
-                {/* Liste des contenus */}
-                <ContentArchive
-                    items={newsletters}
-                    currentPage={page}
-                    totalPages={totalPages}
-                />
+                {/* Composant ContentArchive avec données statiques */}
+                <ContentArchive />
             </div>
         </div>
     )

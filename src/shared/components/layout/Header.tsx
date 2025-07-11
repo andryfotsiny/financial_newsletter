@@ -19,7 +19,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 import { PUBLIC_ROUTES, USER_ROUTES, ADMIN_ROUTES } from '@/shared/constants/routes'
-import { APP_CONFIG } from '@/shared/lib/constants'
 import { isAdmin } from '@/shared/lib/auth'
 import { ThemeToggle } from '../common/ThemeToggle'
 import { Navigation } from './Navigation'
@@ -49,7 +48,7 @@ export function Header() {
                     {/* Logo et navigation desktop */}
                     <div className="flex items-center gap-6">
                         <Link href={PUBLIC_ROUTES.HOME} className="flex items-center space-x-2">
-                            <span className="text-xl font-bold">{APP_CONFIG.name}</span>
+                            <span className="text-xl font-bold">Alphavice</span>
                         </Link>
 
                         <Navigation className="hidden md:flex" />
@@ -126,7 +125,7 @@ export function Header() {
                             </DropdownMenu>
                         ) : (
                             <div className="flex items-center gap-2">
-                                <Button variant="ghost" asChild className="hidden sm:inline-flex">
+                                <Button variant="outline" asChild className="hidden sm:inline-flex">
                                     <Link href={PUBLIC_ROUTES.LOGIN}>Connexion</Link>
                                 </Button>
                                 <Button asChild>

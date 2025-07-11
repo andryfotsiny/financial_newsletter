@@ -1,6 +1,6 @@
 // Configuration de l'application
 export const APP_CONFIG = {
-    name: process.env.NEXT_PUBLIC_SITE_NAME || 'Financial Newsletter',
+    name: process.env.NEXT_PUBLIC_SITE_NAME || 'Alphavice',
     description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || 'Newsletter financière premium avec analyses d\'investissement',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     email: {
@@ -115,7 +115,7 @@ export const ERROR_MESSAGES = {
     REQUIRED_FIELD: 'Ce champ est requis',
     INVALID_EMAIL: 'Email invalide',
     PASSWORD_TOO_SHORT: `Le mot de passe doit contenir au moins ${LIMITS.minPasswordLength} caractères`,
-    PASSWORD_TOO_WEAK: 'Le mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre',
+    PASSWORD_TOO_WEAK: 'Le mot de passe doit contenir un chiffre',
 
     // General
     SOMETHING_WENT_WRONG: 'Une erreur est survenue, veuillez réessayer',

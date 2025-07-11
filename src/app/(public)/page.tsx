@@ -30,7 +30,8 @@ const latestContent = [
         isPremium: false,
         readTime: '5 min',
         views: 1247,
-        slug: 'actualites-financieres-15-decembre-2024'
+        slug: 'actualites-financieres-15-decembre-2024',
+        image: '/images/actu1.jpg'
     },
     {
         id: '2',
@@ -42,7 +43,8 @@ const latestContent = [
         isPremium: true,
         readTime: '12 min',
         views: 892,
-        slug: 'apple-aapl-analyse-technique-fondamentale'
+        slug: 'apple-aapl-analyse-technique-fondamentale',
+        image: '/images/actu2.jpg'
     },
     {
         id: '3',
@@ -54,7 +56,8 @@ const latestContent = [
         isPremium: true,
         readTime: '8 min',
         views: 654,
-        slug: 'selection-momentum-actions-europeennes-q4'
+        slug: 'selection-momentum-actions-europeennes-q4',
+        image: '/images/actu1.jpg'
     },
     {
         id: '4',
@@ -66,7 +69,8 @@ const latestContent = [
         isPremium: false,
         readTime: '7 min',
         views: 1456,
-        slug: 'newsletter-hebdomadaire-semaine-9-decembre'
+        slug: 'newsletter-hebdomadaire-semaine-9-decembre',
+        image: '/images/actu1.jpg'
     },
     {
         id: '5',
@@ -78,7 +82,8 @@ const latestContent = [
         isPremium: true,
         readTime: '15 min',
         views: 743,
-        slug: 'secteur-energetique-opportunites-2025'
+        slug: 'secteur-energetique-opportunites-2025',
+        image: '/images/actu2.jpg'
     }
 ]
 
@@ -196,7 +201,7 @@ export default function HomePage() {
                                     </Link>
                                 </Button>
 
-                                    <Button size="lg" variant="secondaryOutline"  className="text-lg text-secondary" asChild>
+                                <Button size="lg" variant="secondaryOutline"  className="text-lg text-secondary" asChild>
                                     <Link href={PUBLIC_ROUTES.PREMIUM}>
                                         Découvrir Premium
                                     </Link>
@@ -233,7 +238,7 @@ export default function HomePage() {
 
             {/* Liste des dernières publications */}
             <section className=" pb-10 px-4">
-                <div className="container mx-auto max-w-7xl">
+                <div className="container mx-auto m">
                     <motion.div
                         className="flex items-center justify-between mb-8"
                         initial={{ opacity: 0, y: 20 }}
@@ -255,7 +260,7 @@ export default function HomePage() {
                     </motion.div>
 
                     <motion.div
-                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                        className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
                         variants={staggerContainer}
                         initial="initial"
                         whileInView="animate"
@@ -263,10 +268,21 @@ export default function HomePage() {
                     >
                         {latestContent.slice(0, 6).map((item) => (
                             <motion.div key={item.id} variants={fadeInUp}>
-                                <Card className="h-full hover:shadow-lg transition-shadow">
-                                    <CardHeader>
-                                        <div className="flex items-center gap-2 mb-3">
-                                            <Badge variant="outline">
+                                <Card className="h-full hover:shadow-lg transition-shadow overflow-hidden">
+                                    {/* Image en haut à droite */}
+                                    <div className="relative">
+                                        <div className="aspect-video w-full overflow-hidden">
+                                            <img
+                                                src={item.image}
+                                                alt={item.title}
+                                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                            />
+                                            {/* Overlay sombre */}
+                                            <div className="absolute inset-0 bg-black/30 hover:bg-black/20 transition-colors duration-300"></div>
+                                        </div>
+                                        {/* Badges superposés sur l'image */}
+                                        <div className="absolute top-3 left-3 flex items-center gap-2 z-10">
+                                            <Badge variant="outline" className="backdrop-blur-sm">
                                                 {getContentIcon(item.type)}
                                                 <span className="ml-1">{getContentTypeLabel(item.type)}</span>
                                             </Badge>
@@ -277,6 +293,9 @@ export default function HomePage() {
                                                 </Badge>
                                             )}
                                         </div>
+                                    </div>
+
+                                    <CardHeader className="pb-3">
                                         <CardTitle className="text-lg line-clamp-2 hover:text-secondary transition-colors">
                                             <Link href={`${PUBLIC_ROUTES.ARCHIVES}/${item.slug}`}>
                                                 {item.title}
@@ -286,7 +305,8 @@ export default function HomePage() {
                                             {item.excerpt}
                                         </CardDescription>
                                     </CardHeader>
-                                    <CardContent>
+
+                                    <CardContent className="pt-0">
                                         <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
                                             <div className="flex items-center gap-2">
                                                 <span>{item.authorName}</span>
@@ -304,12 +324,16 @@ export default function HomePage() {
                                                 </span>
                                             </div>
                                         </div>
+                                    </CardContent>
+
+                                    {/* Bouton en bas de la carte */}
+                                    <div className="px-6 mt-auto">
                                         <Button variant="outline" size="sm" className="w-full" asChild>
                                             <Link href={`${PUBLIC_ROUTES.ARCHIVES}/${item.slug}`}>
                                                 Lire l&#39;article
                                             </Link>
                                         </Button>
-                                    </CardContent>
+                                    </div>
                                 </Card>
                             </motion.div>
                         ))}

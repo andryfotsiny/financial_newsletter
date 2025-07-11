@@ -55,17 +55,18 @@ export function ContentFilters() {
     }
 
     return (
-        <div className="bg-muted/30 rounded-lg p-4">
+        <div className="rounded-lg p-4">
             <div className="flex flex-col sm:flex-row gap-4">
                 {/* Recherche */}
-                <form onSubmit={handleSearch} className="flex-1">
-                    <div className="relative">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                <form onSubmit={handleSearch} className="w-full sm:max-w-xs ">
+
+                <div className="relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4 " />
                         <Input
                             name="search"
                             placeholder="Rechercher dans les archives..."
                             defaultValue={searchParams.get('search') || ''}
-                            className="pl-10 bg-background"
+                            className="pl-10 bg-background rounded-full"
                         />
                     </div>
                 </form>
@@ -75,7 +76,7 @@ export function ContentFilters() {
                     value={searchParams.get('type') || 'all'}
                     onValueChange={(value) => handleFilter('type', value)}
                 >
-                    <SelectTrigger className="w-[200px] bg-background">
+                    <SelectTrigger className="w-fit min-w-[140px] max-w-[260px] bg-background">
                         <SelectValue placeholder="Type de contenu" />
                     </SelectTrigger>
                     <SelectContent>

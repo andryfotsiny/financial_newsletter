@@ -21,7 +21,7 @@ export const registerSchema = z.object({
         .string()
         .min(LIMITS.minPasswordLength, ERROR_MESSAGES.PASSWORD_TOO_SHORT)
         .regex(
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+            /^(?=.*[a-z])(?=.*\d)/,
             ERROR_MESSAGES.PASSWORD_TOO_WEAK
         ),
     confirmPassword: z.string().min(1, "Veuillez confirmer votre mot de passe"),
