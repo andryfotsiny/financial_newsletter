@@ -16,7 +16,7 @@ const navItems = [
         href: PUBLIC_ROUTES.HOME,
     },
     {
-        title: 'Archives',
+        title: 'bibliothèque',
         href: PUBLIC_ROUTES.ARCHIVES,
     },
     {

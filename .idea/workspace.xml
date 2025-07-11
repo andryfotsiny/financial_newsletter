@@ -5,25 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b294ca24-5af0-4cdc-9e5b-8fcbda4c234f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9250aa82-44d3-426b-b33d-4c004f2879d9.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9250aa82-44d3-426b-b33d-4c004f2879d9/storage_v2/_src_/database/financial_newsletter.L34WHg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9250aa82-44d3-426b-b33d-4c004f2879d9/storage_v2/_src_/database/financial_newsletter.L34WHg/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9250aa82-44d3-426b-b33d-4c004f2879d9/storage_v2/_src_/database/financial_newsletter.L34WHg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9250aa82-44d3-426b-b33d-4c004f2879d9/storage_v2/_src_/database/financial_newsletter.L34WHg/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/migrations/20250709070728_add_user_subscription_relation/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/migrations/20250709072211_add_user_preferences_relation/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/migrations/20250709072952_add_relations_to_user/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/migrations/migration_lock.toml" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/migrations/migration_lock.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(public)/archives/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/archives/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(public)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(public)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/newsletters/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/newsletters/[id]/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/dropdown-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/dropdown-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/components/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/components/RegisterForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/types/auth.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/types/auth.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/content/components/ContentArchive.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/content/components/ContentArchive.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/content/components/ContentFilters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/content/components/ContentFilters.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/layout/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/lib/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/components/layout/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/layout/Navigation.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +139,7 @@
       <workItem from="1752150033865" duration="31464000" />
       <workItem from="1752184051313" duration="754000" />
       <workItem from="1752207970919" duration="3947000" />
-      <workItem from="1752213058044" duration="12001000" />
+      <workItem from="1752213058044" duration="13242000" />
     </task>
     <servers />
   </component>

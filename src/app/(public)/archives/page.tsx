@@ -65,9 +65,10 @@ export default async function ArchivesPage() {
             <div className="space-y-6">
                 {/* Header */}
                 <div className="text-center space-y-2">
-                    <h1 className="text-4xl font-bold">Archives</h1>
-                    <p className="text-lg text-muted-foreground">
-                        Retrouvez toutes nos newsletters et analyses financières
+                    <h1 className="text-4xl font-bold">Retrouvez toutes nos newsletters</h1>
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        Retrouvez toutes nos publications : actualités marchés, recherches, sélections de titres
+                        et analyses macroéconomiques
                     </p>
                 </div>
 

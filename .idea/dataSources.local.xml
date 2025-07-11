@@ -16,5 +16,10 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="dev" uuid="62d60d31-8949-4515-89df-2031b9c3455f">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" />
+      <auth-provider>no-auth</auth-provider>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>

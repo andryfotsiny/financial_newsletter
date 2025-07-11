@@ -1,21 +1,19 @@
 -- CreateTable
-CREATE TABLE "users" (
-    "id" TEXT NOT NULL,
+CREATE TABLE "User" (
+    "id" TEXT NOT NULL PRIMARY KEY,
     "email" TEXT NOT NULL,
     "name" TEXT,
     "password" TEXT NOT NULL,
     "role" TEXT NOT NULL DEFAULT 'USER',
     "avatar" TEXT,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "user_preferences" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "userId" TEXT NOT NULL,
     "receiveDaily" BOOLEAN NOT NULL DEFAULT true,
     "receiveWeekly" BOOLEAN NOT NULL DEFAULT true,
@@ -27,32 +25,30 @@ CREATE TABLE "user_preferences" (
     "preferredSendTime" TEXT NOT NULL DEFAULT '08:00',
     "timezone" TEXT NOT NULL DEFAULT 'Europe/Paris',
     "language" TEXT NOT NULL DEFAULT 'fr',
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "user_preferences_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    CONSTRAINT "user_preferences_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "subscriptions" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "userId" TEXT NOT NULL,
     "plan" TEXT NOT NULL,
     "status" TEXT NOT NULL DEFAULT 'ACTIVE',
     "stripeCustomerId" TEXT,
     "stripeSubscriptionId" TEXT,
-    "currentPeriodStart" TIMESTAMP(3),
-    "currentPeriodEnd" TIMESTAMP(3),
+    "currentPeriodStart" DATETIME,
+    "currentPeriodEnd" DATETIME,
     "cancelAtPeriodEnd" BOOLEAN NOT NULL DEFAULT false,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "subscriptions_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    CONSTRAINT "subscriptions_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "newsletters" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "title" TEXT NOT NULL,
     "subtitle" TEXT,
     "content" TEXT NOT NULL,
@@ -63,19 +59,17 @@ CREATE TABLE "newsletters" (
     "slug" TEXT NOT NULL,
     "seoTitle" TEXT,
     "seoDescription" TEXT,
-    "scheduledFor" TIMESTAMP(3),
-    "publishedAt" TIMESTAMP(3),
+    "scheduledFor" DATETIME,
+    "publishedAt" DATETIME,
     "authorId" TEXT NOT NULL,
     "authorName" TEXT,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "newsletters_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "analyses" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "title" TEXT NOT NULL,
     "subtitle" TEXT,
     "content" TEXT NOT NULL,
@@ -89,20 +83,18 @@ CREATE TABLE "analyses" (
     "ticker" TEXT,
     "sector" TEXT,
     "marketCap" TEXT,
-    "targetPrice" DOUBLE PRECISION,
+    "targetPrice" REAL,
     "recommendation" TEXT,
-    "publishedAt" TIMESTAMP(3),
+    "publishedAt" DATETIME,
     "authorId" TEXT NOT NULL,
     "authorName" TEXT,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "analyses_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "selections" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "title" TEXT NOT NULL,
     "subtitle" TEXT,
     "content" TEXT NOT NULL,
@@ -113,83 +105,73 @@ CREATE TABLE "selections" (
     "slug" TEXT NOT NULL,
     "seoTitle" TEXT,
     "seoDescription" TEXT,
-    "publishedAt" TIMESTAMP(3),
+    "publishedAt" DATETIME,
     "authorId" TEXT NOT NULL,
     "authorName" TEXT,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "selections_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "tags" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "description" TEXT,
     "color" TEXT NOT NULL DEFAULT '#3B82F6',
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "tags_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "content_tags" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "contentId" TEXT NOT NULL,
     "contentType" TEXT NOT NULL,
     "tagId" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "content_tags_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 -- CreateTable
-CREATE TABLE "read_history" (
-    "id" TEXT NOT NULL,
+CREATE TABLE "ReadHistory" (
+    "id" TEXT NOT NULL PRIMARY KEY,
     "userId" TEXT NOT NULL,
     "contentType" TEXT NOT NULL,
     "contentId" TEXT NOT NULL,
-    "readAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "readAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "readDuration" INTEGER,
     "readProgress" INTEGER,
-
-    CONSTRAINT "read_history_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "ReadHistory_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
-CREATE TABLE "favorites" (
-    "id" TEXT NOT NULL,
+CREATE TABLE "Favorite" (
+    "id" TEXT NOT NULL PRIMARY KEY,
     "userId" TEXT NOT NULL,
     "contentType" TEXT NOT NULL,
     "contentId" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "favorites_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "Favorite_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "email_logs" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "userId" TEXT NOT NULL,
     "newsletterId" TEXT,
     "type" TEXT NOT NULL,
     "subject" TEXT NOT NULL,
     "status" TEXT NOT NULL DEFAULT 'PENDING',
-    "sentAt" TIMESTAMP(3),
-    "openedAt" TIMESTAMP(3),
-    "clickedAt" TIMESTAMP(3),
+    "sentAt" DATETIME,
+    "openedAt" DATETIME,
+    "clickedAt" DATETIME,
     "errorMessage" TEXT,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "email_logs_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 -- CreateTable
 CREATE TABLE "reviews" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "userId" TEXT NOT NULL,
     "userName" TEXT,
     "rating" INTEGER NOT NULL,
@@ -197,40 +179,34 @@ CREATE TABLE "reviews" (
     "content" TEXT NOT NULL,
     "status" TEXT NOT NULL DEFAULT 'PENDING',
     "isPublic" BOOLEAN NOT NULL DEFAULT false,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "reviews_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "site_settings" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "key" TEXT NOT NULL,
     "value" TEXT NOT NULL,
     "description" TEXT,
     "category" TEXT NOT NULL DEFAULT 'general',
     "isPublic" BOOLEAN NOT NULL DEFAULT false,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "site_settings_pkey" PRIMARY KEY ("id")
+    "updatedAt" DATETIME NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "analytics" (
-    "id" TEXT NOT NULL,
-    "date" DATE NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "date" DATETIME NOT NULL,
     "metric" TEXT NOT NULL,
     "value" INTEGER NOT NULL,
     "metadata" JSONB,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "analytics_pkey" PRIMARY KEY ("id")
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 -- CreateTable
 CREATE TABLE "accounts" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "userId" TEXT NOT NULL,
     "type" TEXT NOT NULL,
     "provider" TEXT NOT NULL,
@@ -241,30 +217,26 @@ CREATE TABLE "accounts" (
     "token_type" TEXT,
     "scope" TEXT,
     "id_token" TEXT,
-    "session_state" TEXT,
-
-    CONSTRAINT "accounts_pkey" PRIMARY KEY ("id")
+    "session_state" TEXT
 );
 
 -- CreateTable
 CREATE TABLE "sessions" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "sessionToken" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
-    "expires" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "sessions_pkey" PRIMARY KEY ("id")
+    "expires" DATETIME NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "verification_tokens" (
     "identifier" TEXT NOT NULL,
     "token" TEXT NOT NULL,
-    "expires" TIMESTAMP(3) NOT NULL
+    "expires" DATETIME NOT NULL
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "user_preferences_userId_key" ON "user_preferences"("userId");
@@ -297,12 +269,6 @@ CREATE UNIQUE INDEX "tags_slug_key" ON "tags"("slug");
 CREATE UNIQUE INDEX "content_tags_contentId_tagId_contentType_key" ON "content_tags"("contentId", "tagId", "contentType");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "read_history_userId_contentId_contentType_key" ON "read_history"("userId", "contentId", "contentType");
-
--- CreateIndex
-CREATE UNIQUE INDEX "favorites_userId_contentId_contentType_key" ON "favorites"("userId", "contentId", "contentType");
-
--- CreateIndex
 CREATE UNIQUE INDEX "site_settings_key_key" ON "site_settings"("key");
 
 -- CreateIndex
@@ -319,6 +285,3 @@ CREATE UNIQUE INDEX "verification_tokens_token_key" ON "verification_tokens"("to
 
 -- CreateIndex
 CREATE UNIQUE INDEX "verification_tokens_identifier_token_key" ON "verification_tokens"("identifier", "token");
-
--- AddForeignKey
-ALTER TABLE "subscriptions" ADD CONSTRAINT "subscriptions_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
