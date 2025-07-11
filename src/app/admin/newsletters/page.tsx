@@ -39,8 +39,8 @@ export default async function NewslettersAdminPage({ searchParams }: PageProps) 
 
     if (params?.search) {
         where.OR = [
-            { title: { contains: params.search, mode: 'insensitive' } },
-            { content: { contains: params.search, mode: 'insensitive' } },
+            { title: { contains: params.search } },
+            { content: { contains: params.search } },
         ]
     }
 
