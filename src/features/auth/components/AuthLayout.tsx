@@ -21,7 +21,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
                             <span className="text-xl font-bold">{APP_CONFIG.name}</span>
                         </Link>
                         <Button
-                            variant="ghost"
+                            variant="outline"
                             size="sm"
                             asChild
                         >
