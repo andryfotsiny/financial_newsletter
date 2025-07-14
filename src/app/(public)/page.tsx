@@ -112,12 +112,12 @@ const latestContent = [
 // Logos partenaires avec plus de contenu
 const partners = [
     { name: 'Bloomberg', logo: '/partners/bloomberg.png', description: 'Données de marché temps réel' },
-    { name: 'FactSet', logo: '/partners/factset.png', description: 'Analytics financiers' },
+    { name: 'FactSet', logo: '/partners/FactSet.jpeg', description: 'Analytics financiers' },
     { name: 'Refinitiv', logo: '/partners/refinitiv.png', description: 'Flux d\'actualités' },
-    { name: 'Reuters', logo: '/partners/reuters.png', description: 'Informations mondiales' },
+    { name: 'Reuters', logo: '/partners/reuters.jpg', description: 'Informations mondiales' },
     { name: 'Morningstar', logo: '/partners/morningstar.png', description: 'Recherche investissement' },
-    { name: 'S&P Global', logo: '/partners/sp-global.png', description: 'Notations et indices' },
-    { name: 'MSCI', logo: '/partners/msci.png', description: 'Indices et analytics' },
+    { name: 'S&P Global', logo: '/partners/sp-global.jpg', description: 'Notations et indices' },
+    { name: 'MSCI', logo: '/partners/MSCI-Logo.png', description: 'Indices et analytics' },
     { name: 'Dow Jones', logo: '/partners/dowjones.png', description: 'Actualités financières' }
 ]
 
