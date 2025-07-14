@@ -1,4 +1,3 @@
-// src/app/(public)/premium/page.tsx
 'use client'
 
 import { motion } from 'framer-motion'
@@ -18,17 +17,19 @@ import {
     Building,
     Quote,
     Clock,
-    ChevronRight
+    ChevronRight,
+    Star,
+    Award,
+    Globe
 } from 'lucide-react'
 
-import { Card, CardContent, CardDescription,  CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import { PUBLIC_ROUTES, USER_ROUTES } from '@/shared/constants/routes'
-//import { SUBSCRIPTION_PLANS } from '@/shared/lib/constants'
 
 // Données statiques pour les fonctionnalités
 const featuresData = [
@@ -105,21 +106,56 @@ const testimonialsData = [
         role: "Directrice Financière",
         company: "Tech Solutions SA",
         content: "Les analyses sont d'une qualité exceptionnelle. Nous avons amélioré notre performance de 35% grâce aux recommandations.",
-        plan: "ENTERPRISE"
+        plan: "ENTERPRISE",
+        rating: 5
     },
     {
         name: "Jean-Paul Martin",
         role: "Investisseur indépendant",
         company: null,
         content: "Un excellent rapport qualité-prix. Les sélections d'investissement sont particulièrement pertinentes.",
-        plan: "PREMIUM"
+        plan: "PREMIUM",
+        rating: 5
     },
     {
         name: "Sophie Chen",
         role: "Analyste",
         company: "Banque Privée",
         content: "La réactivité et la précision des analyses nous permettent de prendre des décisions éclairées rapidement.",
-        plan: "ENTERPRISE"
+        plan: "ENTERPRISE",
+        rating: 5
+    },
+    {
+        name: "Marc Dubois",
+        role: "Trader indépendant",
+        company: null,
+        content: "Interface claire et analyses pointues. Mes performances se sont nettement améliorées depuis que je suis abonné.",
+        plan: "PREMIUM",
+        rating: 5
+    }
+]
+
+// Avantages additionnels pour la sidebar
+const additionalBenefits = [
+    {
+        icon: Award,
+        title: "87% de taux de réussite",
+        description: "Sur nos recommandations 2024"
+    },
+    {
+        icon: Users,
+        title: "15,000+ investisseurs",
+        description: "Nous font déjà confiance"
+    },
+    {
+        icon: Shield,
+        title: "Données sécurisées",
+        description: "Certification GDPR complète"
+    },
+    {
+        icon: Globe,
+        title: "Sources mondiales",
+        description: "Bloomberg, FactSet, Reuters"
     }
 ]
 
@@ -142,8 +178,8 @@ export default function PremiumPage() {
     const isYearly = billingPeriod === 'yearly'
 
     return (
-        <div className="flex flex-col">
-            {/* Hero Section avec gradient moderne */}
+        <div className="min-h-screen bg-background">
+            {/* Hero Section */}
             <section className="relative py-20 px-4 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
                 <div className="absolute inset-0">
@@ -200,172 +236,306 @@ export default function PremiumPage() {
                 </div>
             </section>
 
-            {/* Plans de tarification */}
+            {/* Section principale avec layout Les Échos */}
             <section className="py-16 px-4">
-                <div className="container mx-auto max-w-6xl">
-                    <motion.div
-                        className="grid md:grid-cols-3 gap-8"
-                        variants={staggerContainer}
-                        initial="initial"
-                        whileInView="animate"
-                        viewport={{ once: true }}
-                    >
-                        {/* Plan Gratuit */}
-                        <motion.div variants={fadeInUp}>
-                            <Card className="relative h-full hover:shadow-xl transition-shadow">
-                                <CardHeader>
-                                    <div className="flex items-center justify-between mb-4">
-                                        <Badge variant="secondary">Gratuit</Badge>
-                                    </div>
-                                    <CardTitle className="text-2xl">Essentiel</CardTitle>
-                                    <CardDescription>
-                                        Parfait pour découvrir nos services
-                                    </CardDescription>
-                                    <div className="mt-4">
-                                        <span className="text-4xl font-bold">0€</span>
-                                        <span className="text-muted-foreground">/mois</span>
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <Button className="w-full mb-6" variant="outline" asChild>
-                                        <Link href={PUBLIC_ROUTES.REGISTER}>
-                                            Commencer gratuitement
-                                        </Link>
-                                    </Button>
-                                    <div className="space-y-3">
-                                        {featuresData.map((feature, index) => (
-                                            <div key={index} className="flex items-start gap-3">
-                                                {feature.free ? (
-                                                    <Check className="h-5 w-5 text-green-500 mt-0.5" />
-                                                ) : (
-                                                    <X className="h-5 w-5 text-muted-foreground mt-0.5" />
-                                                )}
-                                                <div className="flex-1">
-                                                    <p className={`text-sm ${!feature.free ? 'text-muted-foreground' : ''}`}>
-                                                        {feature.title}
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="relative grid grid-cols-1 lg:grid-cols-4 gap-8">
+                        {/* Ligne de séparation verticale */}
+                        <div className="hidden lg:block absolute left-3/4 top-0 w-px bg-border/40 h-full ml-4"></div>
+
+                        {/* Colonne principale - Plans de tarification */}
+                        <div className="lg:col-span-3 space-y-8">
+                            <motion.div
+                                className="grid md:grid-cols-3 gap-8"
+                                variants={staggerContainer}
+                                initial="initial"
+                                whileInView="animate"
+                                viewport={{ once: true }}
+                            >
+                                {/* Plan Gratuit */}
+                                <motion.div variants={fadeInUp}>
+                                    <Card className="relative h-full hover:shadow-xl transition-shadow">
+                                        <CardHeader>
+                                            <div className="flex items-center justify-between mb-4">
+                                                <Badge variant="secondary">Gratuit</Badge>
+                                            </div>
+                                            <CardTitle className="text-2xl">Essentiel</CardTitle>
+                                            <CardDescription>
+                                                Parfait pour découvrir nos services
+                                            </CardDescription>
+                                            <div className="mt-4">
+                                                <span className="text-4xl font-bold">0€</span>
+                                                <span className="text-muted-foreground">/mois</span>
+                                            </div>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <Button className="w-full mb-6" variant="outline" asChild>
+                                                <Link href={PUBLIC_ROUTES.REGISTER}>
+                                                    Commencer gratuitement
+                                                </Link>
+                                            </Button>
+                                            <div className="space-y-3">
+                                                {featuresData.slice(0, 6).map((feature, index) => (
+                                                    <div key={index} className="flex items-start gap-3">
+                                                        {feature.free ? (
+                                                            <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                                                        ) : (
+                                                            <X className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                                                        )}
+                                                        <div className="flex-1">
+                                                            <p className={`text-sm ${!feature.free ? 'text-muted-foreground' : ''}`}>
+                                                                {feature.title}
+                                                            </p>
+                                                            {typeof feature.free === 'string' && (
+                                                                <p className="text-xs text-muted-foreground">
+                                                                    {feature.free}
+                                                                </p>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                </motion.div>
+
+                                {/* Plan Premium - Mis en avant */}
+                                <motion.div variants={fadeInUp}>
+                                    <Card className="relative h-full border-primary shadow-lg hover:shadow-xl transition-shadow">
+                                        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                                            <Badge className="px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-500">
+                                                <Crown className="w-3 h-3 mr-1" />
+                                                Plus populaire
+                                            </Badge>
+                                        </div>
+                                        <CardHeader className="pt-8">
+                                            <div className="flex items-center justify-between mb-4">
+                                                <Badge>Premium</Badge>
+                                            </div>
+                                            <CardTitle className="text-2xl">Professionnel</CardTitle>
+                                            <CardDescription>
+                                                Pour les investisseurs sérieux
+                                            </CardDescription>
+                                            <div className="mt-4">
+                                                <span className="text-4xl font-bold">
+                                                    {isYearly ? '23,99€' : '29,99€'}
+                                                </span>
+                                                <span className="text-muted-foreground">/mois</span>
+                                                {isYearly && (
+                                                    <p className="text-sm text-green-600 mt-1">
+                                                        Économisez 72€/an
                                                     </p>
-                                                    {typeof feature.free === 'string' && (
-                                                        <p className="text-xs text-muted-foreground">
-                                                            {feature.free}
-                                                        </p>
-                                                    )}
+                                                )}
+                                            </div>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <Button className="w-full mb-6" asChild>
+                                                <Link href={USER_ROUTES.SUBSCRIPTION}>
+                                                    Commencer l&#39;essai gratuit
+                                                </Link>
+                                            </Button>
+                                            <div className="space-y-3">
+                                                {featuresData.slice(0, 6).map((feature, index) => (
+                                                    <div key={index} className="flex items-start gap-3">
+                                                        {feature.premium ? (
+                                                            <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                                                        ) : (
+                                                            <X className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                                                        )}
+                                                        <div className="flex-1">
+                                                            <p className={`text-sm ${!feature.premium ? 'text-muted-foreground' : ''}`}>
+                                                                {feature.title}
+                                                            </p>
+                                                            {typeof feature.premium === 'string' && (
+                                                                <p className="text-xs text-muted-foreground">
+                                                                    {feature.premium}
+                                                                </p>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                </motion.div>
+
+                                {/* Plan Enterprise */}
+                                <motion.div variants={fadeInUp}>
+                                    <Card className="relative h-full hover:shadow-xl transition-shadow">
+                                        <CardHeader>
+                                            <div className="flex items-center justify-between mb-4">
+                                                <Badge variant="outline">
+                                                    <Building className="w-3 h-3 mr-1" />
+                                                    Entreprise
+                                                </Badge>
+                                            </div>
+                                            <CardTitle className="text-2xl">Enterprise</CardTitle>
+                                            <CardDescription>
+                                                Solutions sur mesure pour les équipes
+                                            </CardDescription>
+                                            <div className="mt-4">
+                                                <span className="text-4xl font-bold">Sur devis</span>
+                                            </div>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <Button className="w-full mb-6" variant="outline" asChild>
+                                                <Link href="/contact">
+                                                    Nous contacter
+                                                </Link>
+                                            </Button>
+                                            <div className="space-y-3">
+                                                {featuresData.slice(0, 6).map((feature, index) => (
+                                                    <div key={index} className="flex items-start gap-3">
+                                                        <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                                                        <div className="flex-1">
+                                                            <p className="text-sm">
+                                                                {feature.title}
+                                                            </p>
+                                                            {typeof feature.enterprise === 'string' && (
+                                                                <p className="text-xs text-muted-foreground">
+                                                                    {feature.enterprise}
+                                                                </p>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                </motion.div>
+                            </motion.div>
+
+                            {/* Fonctionnalités détaillées */}
+                            <div className="space-y-6 mt-12">
+                                <h2 className="text-2xl font-bold text-foreground">Fonctionnalités complètes</h2>
+
+                                <div className="space-y-4">
+                                    {featuresData.map((feature, index) => (
+                                        <div key={index} className="border-b border-border/50 pb-4 last:border-b-0">
+                                            <div className="flex items-start gap-4">
+                                                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                    <feature.icon className="h-5 w-5 text-primary" />
+                                                </div>
+                                                <div className="flex-1">
+                                                    <h3 className="font-semibold text-foreground mb-1">{feature.title}</h3>
+                                                    <p className="text-sm text-muted-foreground mb-3">{feature.description}</p>
+
+                                                    <div className="grid grid-cols-3 gap-4 text-xs">
+                                                        <div className="text-center">
+                                                            <div className="font-medium mb-1">Gratuit</div>
+                                                            {feature.free ? (
+                                                                typeof feature.free === 'string' ? (
+                                                                    <span className="text-muted-foreground">{feature.free}</span>
+                                                                ) : (
+                                                                    <Check className="h-4 w-4 text-green-500 mx-auto" />
+                                                                )
+                                                            ) : (
+                                                                <X className="h-4 w-4 text-muted-foreground mx-auto" />
+                                                            )}
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium mb-1">Premium</div>
+                                                            {feature.premium ? (
+                                                                typeof feature.premium === 'string' ? (
+                                                                    <span className="text-muted-foreground">{feature.premium}</span>
+                                                                ) : (
+                                                                    <Check className="h-4 w-4 text-green-500 mx-auto" />
+                                                                )
+                                                            ) : (
+                                                                <X className="h-4 w-4 text-muted-foreground mx-auto" />
+                                                            )}
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium mb-1">Enterprise</div>
+                                                            {typeof feature.enterprise === 'string' ? (
+                                                                <span className="text-muted-foreground">{feature.enterprise}</span>
+                                                            ) : (
+                                                                <Check className="h-4 w-4 text-green-500 mx-auto" />
+                                                            )}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </motion.div>
-
-                        {/* Plan Premium - Mis en avant */}
-                        <motion.div variants={fadeInUp}>
-                            <Card className="relative h-full border-primary shadow-lg hover:shadow-xl transition-shadow">
-                                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                                    <Badge className="px-3 py-1">
-                                        <Crown className="w-3 h-3 mr-1" />
-                                        Plus populaire
-                                    </Badge>
+                                        </div>
+                                    ))}
                                 </div>
-                                <CardHeader className="pt-8">
-                                    <div className="flex items-center justify-between mb-4">
-                                        <Badge>Premium</Badge>
-                                    </div>
-                                    <CardTitle className="text-2xl">Professionnel</CardTitle>
-                                    <CardDescription>
-                                        Pour les investisseurs sérieux
-                                    </CardDescription>
-                                    <div className="mt-4">
-                                        <span className="text-4xl font-bold">
-                                            {isYearly ? '15,99€' : '19,99€'}
-                                        </span>
-                                        <span className="text-muted-foreground">/mois</span>
-                                        {isYearly && (
-                                            <p className="text-sm text-green-600 mt-1">
-                                                Économisez 48€/an
-                                            </p>
-                                        )}
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <Button className="w-full mb-6" asChild>
-                                        <Link href={USER_ROUTES.SUBSCRIPTION}>
-                                            Commencer l&#39;essai gratuit
-                                        </Link>
-                                    </Button>
-                                    <div className="space-y-3">
-                                        {featuresData.map((feature, index) => (
-                                            <div key={index} className="flex items-start gap-3">
-                                                {feature.premium ? (
-                                                    <Check className="h-5 w-5 text-green-500 mt-0.5" />
-                                                ) : (
-                                                    <X className="h-5 w-5 text-muted-foreground mt-0.5" />
-                                                )}
-                                                <div className="flex-1">
-                                                    <p className={`text-sm ${!feature.premium ? 'text-muted-foreground' : ''}`}>
-                                                        {feature.title}
-                                                    </p>
-                                                    {typeof feature.premium === 'string' && (
-                                                        <p className="text-xs text-muted-foreground">
-                                                            {feature.premium}
-                                                        </p>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </motion.div>
+                            </div>
+                        </div>
 
-                        {/* Plan Enterprise */}
-                        <motion.div variants={fadeInUp}>
-                            <Card className="relative h-full hover:shadow-xl transition-shadow">
-                                <CardHeader>
-                                    <div className="flex items-center justify-between mb-4">
-                                        <Badge variant="outline">
-                                            <Building className="w-3 h-3 mr-1" />
-                                            Entreprise
-                                        </Badge>
-                                    </div>
-                                    <CardTitle className="text-2xl">Enterprise</CardTitle>
-                                    <CardDescription>
-                                        Solutions sur mesure pour les équipes
-                                    </CardDescription>
-                                    <div className="mt-4">
-                                        <span className="text-4xl font-bold">Sur devis</span>
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <Button className="w-full mb-6" variant="outline" asChild>
-                                        <Link href="/contact">
-                                            Nous contacter
-                                        </Link>
-                                    </Button>
-                                    <div className="space-y-3">
-                                        {featuresData.map((feature, index) => (
-                                            <div key={index} className="flex items-start gap-3">
-                                                <Check className="h-5 w-5 text-green-500 mt-0.5" />
+                        {/* Sidebar */}
+                        <div className="lg:col-span-1 space-y-6">
+                            <div className="sticky top-24">
+                                {/* Avantages */}
+                                <div className="space-y-4 mb-6">
+                                    <h3 className="text-lg font-semibold text-foreground">Pourquoi nous choisir ?</h3>
+
+                                    {additionalBenefits.map((benefit, index) => (
+                                        <div key={index} className="border-b border-border/30 pb-4 last:border-b-0">
+                                            <div className="flex items-start gap-3">
+                                                <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                    <benefit.icon className="h-4 w-4 text-primary" />
+                                                </div>
                                                 <div className="flex-1">
-                                                    <p className="text-sm">
-                                                        {feature.title}
-                                                    </p>
-                                                    {typeof feature.enterprise === 'string' && (
-                                                        <p className="text-xs text-muted-foreground">
-                                                            {feature.enterprise}
-                                                        </p>
-                                                    )}
+                                                    <h4 className="font-medium text-sm mb-1">{benefit.title}</h4>
+                                                    <p className="text-xs text-muted-foreground">{benefit.description}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Témoignages condensés */}
+                                <div className="border-t border-border/40 pt-6">
+                                    <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                                        <Quote className="h-4 w-4" />
+                                        Ils nous recommandent
+                                    </h3>
+
+                                    <div className="space-y-4">
+                                        {testimonialsData.slice(0, 2).map((testimonial, index) => (
+                                            <div key={index} className="border-l-2 border-primary/20 pl-3 py-2">
+                                                <p className="text-xs text-muted-foreground italic mb-2">
+                                                    &#34;{testimonial.content.slice(0, 80)}...&#34;
+                                                </p>
+                                                <div className="flex items-center justify-between">
+                                                    <div>
+                                                        <p className="text-xs font-medium">{testimonial.name}</p>
+                                                        <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                                                    </div>
+                                                    <div className="flex gap-1">
+                                                        {[...Array(5)].map((_, i) => (
+                                                            <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                                                        ))}
+                                                    </div>
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
-                                </CardContent>
-                            </Card>
-                        </motion.div>
-                    </motion.div>
+                                </div>
+
+                                {/* CTA */}
+                                <div className="border-t border-border/40 pt-6">
+                                    <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg p-4">
+                                        <h3 className="text-sm font-semibold text-foreground mb-2">
+                                            Commencez aujourd&#39;hui
+                                        </h3>
+                                        <p className="text-xs text-muted-foreground mb-3">
+                                            7 jours d&#39;essai gratuit, puis 29,99€/mois. Résiliable à tout moment.
+                                        </p>
+                                        <Button size="sm" className="w-full" asChild>
+                                            <Link href={USER_ROUTES.SUBSCRIPTION}>
+                                                Essayer gratuitement
+                                            </Link>
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            {/* Témoignages */}
+            {/* Témoignages complets */}
             <section className="py-16 px-4 bg-muted/30">
                 <div className="container mx-auto max-w-6xl">
                     <motion.div
@@ -383,7 +553,7 @@ export default function PremiumPage() {
                     </motion.div>
 
                     <motion.div
-                        className="grid md:grid-cols-3 gap-8"
+                        className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
                         variants={staggerContainer}
                         initial="initial"
                         whileInView="animate"
@@ -391,21 +561,26 @@ export default function PremiumPage() {
                     >
                         {testimonialsData.map((testimonial, index) => (
                             <motion.div key={index} variants={fadeInUp}>
-                                <Card>
+                                <Card className="h-full">
                                     <CardContent className="pt-6">
-                                        <Quote className="h-8 w-8 text-primary/20 mb-4" />
+                                        <div className="flex items-center gap-1 mb-3">
+                                            {[...Array(5)].map((_, i) => (
+                                                <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                                            ))}
+                                        </div>
+                                        <Quote className="h-6 w-6 text-primary/20 mb-3" />
                                         <p className="text-sm mb-4 italic">
                                             &#34;{testimonial.content}&#34;
                                         </p>
                                         <div className="flex items-center justify-between">
                                             <div>
-                                                <p className="font-semibold">{testimonial.name}</p>
-                                                <p className="text-sm text-muted-foreground">
+                                                <p className="font-semibold text-sm">{testimonial.name}</p>
+                                                <p className="text-xs text-muted-foreground">
                                                     {testimonial.role}
                                                     {testimonial.company && `, ${testimonial.company}`}
                                                 </p>
                                             </div>
-                                            <Badge variant="outline">
+                                            <Badge variant="outline" className="text-xs">
                                                 {testimonial.plan === 'ENTERPRISE' ? 'Enterprise' : 'Premium'}
                                             </Badge>
                                         </div>
