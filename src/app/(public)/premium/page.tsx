@@ -308,7 +308,7 @@ export default function PremiumPage() {
                                                 Plus populaire
                                             </Badge>
                                         </div>
-                                        <CardHeader className="pt-8">
+                                        <CardHeader >
                                             <div className="flex items-center justify-between mb-4">
                                                 <Badge>Premium</Badge>
                                             </div>
@@ -371,10 +371,10 @@ export default function PremiumPage() {
                                             </div>
                                             <CardTitle className="text-2xl">Enterprise</CardTitle>
                                             <CardDescription>
-                                                Solutions sur mesure pour les équipes
+                                                Solutions sur mesure Pour les investisseurs sérieux
                                             </CardDescription>
-                                            <div className="mt-4">
-                                                <span className="text-4xl font-bold">Sur devis</span>
+                                            <div >
+                                                <span className="text-3xl font-bold">Sur devis</span>
                                             </div>
                                         </CardHeader>
                                         <CardContent>
