@@ -194,7 +194,7 @@ export function ContentArchive() {
             <div className="max-w-7xl mx-auto px-6 py-8">
                 <div className="relative grid grid-cols-1 lg:grid-cols-4 gap-8">
                     {/* Ligne de séparation verticale */}
-                    <div className="hidden lg:block absolute left-3/4 top-0 w-px bg-border/40 h-full -ml-4"></div>
+
 
                     {/* Colonne principale */}
                     <div className="lg:col-span-3 space-y-8">
@@ -386,10 +386,10 @@ export function ContentArchive() {
                     <div className="lg:col-span-1 space-y-6">
                         {/* Logo fixe avec transparence */}
                         <div className="sticky top-24 z-10">
-                            <div className="relative bg-background/90 backdrop-blur-sm rounded-lg p-4 mb-6 border border-border/20">
+                            <div className="relative pb bg-background/90 backdrop-blur-sm rounded-lg p-4 mb-6 border border-border/20">
                                 <div className="text-center">
                                     <h2 className="text-2xl font-bold text-primary">Alphavice</h2>
-                                    <p className="text-xs text-muted-foreground">Analyse Financière Premium</p>
+
                                 </div>
                             </div>
                         </div>
