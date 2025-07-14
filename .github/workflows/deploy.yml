@@ -65,7 +65,7 @@ jobs:
             npm run build
 
             echo "🚀 Démarrage ou redémarrage via PM2"
-            pm2 restart alphavice || pm2 start "npm run dev -- --port 3005" --name 'alphavice'
+            pm2 restart alphavice || pm2 start "npm run start-- --port 3005" --name 'alphavice'
 
             echo "✅ Déploiement terminé avec succès"
           EOF
