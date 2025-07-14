@@ -383,7 +383,7 @@ const UserActions = memo(function UserActions({
 
 // Composant MobileMenu mémorisé
 const MobileMenu = memo(function MobileMenu({
-  session,
+  session: _session,
   isAuthenticated,
 }: {
   session: any;
